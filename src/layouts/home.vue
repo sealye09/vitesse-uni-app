@@ -1,7 +1,11 @@
+<script setup lang="ts">
+import AppFooter from "@/components/AppFooter.vue";
+</script>
+
 <template>
   <view class="px-10 py-20 text-center">
-    <slot />
-    <app-footer />
+    <slot></slot>
+    <AppFooter />
     <view class="mx-auto mt-5 text-center text-sm opacity-25">
       [Home Layout]
     </view>

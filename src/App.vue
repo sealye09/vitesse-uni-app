@@ -1,3 +1,5 @@
 <script setup lang="ts">
-onLaunch(() => {})
+import { onLaunch } from "@dcloudio/uni-app";
+
+onLaunch(() => {});
 </script>

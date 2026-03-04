@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/uni-helper/vitesse-uni-app/raw/main/.github/images/preview.png" width="300"/>
+  <img src="https://github.com/uni-helper/vitesse-uni-app/raw/main/.github/images/preview.png" width="300" alt="preview image"/>
 </p>
 
 <h2 align="center">

@@ -1,10 +1,10 @@
-import { presetUni } from '@uni-helper/unocss-preset-uni'
+import { presetUni } from "@uni-helper/unocss-preset-uni";
 import {
   defineConfig,
   presetIcons,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss'
+} from "unocss";
 
 export default defineConfig({
   presets: [
@@ -13,8 +13,8 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
       extraProperties: {
-        'display': 'inline-block',
-        'vertical-align': 'middle',
+        display: "inline-block",
+        "vertical-align": "middle",
       },
       // HBuilderX 必须针对要使用的 Collections 做异步导入
       // collections: {
@@ -23,4 +23,4 @@ export default defineConfig({
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-})
+});
