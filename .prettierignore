@@ -15,3 +15,6 @@ CODEOWNERS
 .npmrc
 *-lock.yaml
 src/uni_modules
+
+./src/manifest.json
+./src//pages.json
