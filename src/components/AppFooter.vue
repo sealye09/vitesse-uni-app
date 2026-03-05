@@ -16,7 +16,7 @@ function handleClickGithub() {
     class="m-5 flex items-center justify-center gap-3 text-xl text-gray-400"
   >
     <navigator open-type="redirect" url="/pages/index">
-      <view class="i-carbon-campsite" />
+      <view class="icon-[mdi-light--home]" />
     </navigator>
 
     <view class="cursor-pointer" @click="handleClickGithub">

@@ -6,6 +6,8 @@
     >
       <image class="inline-block h-18 w-18" src="/static/logo.svg" />
       <text class="uni-helper-logo__label mt--2 text-green5">uni-helper</text>
+      <view class="i-[ph--house]"></view>
+      <span class="i-[ph--acorn-bold]"></span>
     </view>
     <view
       class="i-carbon-add mx-4 my-auto transform text-3xl text-gray-400 transition-all-500 hover:rotate-135"

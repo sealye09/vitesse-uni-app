@@ -10,9 +10,7 @@ import {
 
 export default antfu({
   type: "app",
-  unocss: {
-    attributify: false,
-  },
+  unocss: false,
   lessOpinionated: true,
   stylistic: false,
   ignores: [

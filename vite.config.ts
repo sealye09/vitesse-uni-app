@@ -4,9 +4,11 @@ import UniHelperManifest from "@uni-helper/vite-plugin-uni-manifest";
 import UniHelperPages from "@uni-helper/vite-plugin-uni-pages";
 import path from "node:path";
 import process from "node:process";
-import UnoCSS from "unocss/vite";
 import { defineConfig, loadEnv } from "vite";
+
 import UniPolyfill from "vite-plugin-uni-polyfill";
+import { UnifiedViteWeappTailwindcssPlugin } from "weapp-tailwindcss/vite";
+import postcssPlugins from "./postcss.config";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -36,7 +38,21 @@ export default defineConfig(({ command, mode }) => {
       UniHelperLayouts(),
       Uni(),
       UniPolyfill(),
-      UnoCSS(),
+      UnifiedViteWeappTailwindcssPlugin({
+        rem2rpx: true,
+      }),
     ],
+    // 内联 postcss 注册 tailwindcss
+    css: {
+      postcss: {
+        plugins: postcssPlugins,
+      },
+      // https://vitejs.dev/config/shared-options.html#css-preprocessoroptions
+      preprocessorOptions: {
+        scss: {
+          silenceDeprecations: ["legacy-js-api"],
+        },
+      },
+    },
   };
 });

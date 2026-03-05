@@ -15,7 +15,7 @@ function go() {
   <view>
     <view
       bg="transparent"
-      class="auto active:none m-auto m-t-5 mt-5 box-border box-border w-250px w-250px w-full w-full border border-gray-200 rounded rounded border-solid bg-transparent p-x-4 p-y-2 px-4 py-2 text-center text-center outline-none outline-none dark:border-gray-700 active:outline-none"
+      class="auto active:none m-auto m-t-5 mt-5 box-border w-250px w-250px w-full border border-gray-200 rounded border-solid bg-transparent p-x-4 p-y-2 px-4 py-2 text-center outline-none dark:border-gray-700 active:outline-none"
     >
       <input
         v-model="name"
@@ -27,7 +27,7 @@ function go() {
     </view>
     <view>
       <button
-        class="m-auto m-auto m-t-3 w-120rpx rounded bg-teal-600 px-4 py-1 text-sm text-white"
+        class="m-auto m-t-3 w-120rpx rounded bg-teal-600 px-4 py-1 text-sm text-white"
         :disabled="!name"
         hover-class="bg-teal-700"
         @click="go"

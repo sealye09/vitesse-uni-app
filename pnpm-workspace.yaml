@@ -1,8 +1,10 @@
 onlyBuiltDependencies:
-  - '@uni-helper/unocss-preset-uni'
+  - '@parcel/watcher'
+  - '@weapp-tailwindcss/merge-v3'
   - bufferutil
   - core-js
   - esbuild
   - lefthook
   - minidev
   - vue-demi
+  - weapp-tailwindcss
