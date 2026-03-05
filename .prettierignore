@@ -17,4 +17,4 @@ CODEOWNERS
 src/uni_modules
 
 ./src/manifest.json
-./src//pages.json
+./src/pages.json

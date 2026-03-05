@@ -1,0 +1,14 @@
+# lefthook.yml
+
+lefthook: ./node_modules/.bin/lefthook
+
+pre-commit:
+  commands:
+    format:
+      glob: "*.{js,jsx,ts,tsx,json,md,css,scss,less,stylus,html,vue}"
+      run: pnpm prettier --write --ignore-unknown --check {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{js,jsx,ts,tsx,vue}"
+      run: pnpm eslint --fix {staged_files}
+      stage_fixed: true

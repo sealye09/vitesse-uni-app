@@ -1,6 +1,8 @@
 onlyBuiltDependencies:
-  - "@uni-helper/unocss-preset-uni"
+  - '@uni-helper/unocss-preset-uni'
   - bufferutil
   - core-js
   - esbuild
+  - lefthook
   - minidev
+  - vue-demi
