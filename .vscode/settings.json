@@ -108,5 +108,13 @@
     "**/pages.json": "jsonc"
   },
   "prettier.enable": true,
-  "unocss.disable": true
+  "unocss.disable": true,
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    "hover-class",
+    "hoverCclass"
+  ]
 }

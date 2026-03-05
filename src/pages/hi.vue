@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import HiCounter from "@/components/HiCounter.vue";
 import { useQuery } from "@/hooks/useQuery";
 
 definePage({
