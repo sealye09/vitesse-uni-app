@@ -4,6 +4,7 @@ import Uni from "@uni-helper/plugin-uni";
 import UniHelperLayouts from "@uni-helper/vite-plugin-uni-layouts";
 import UniHelperManifest from "@uni-helper/vite-plugin-uni-manifest";
 import UniHelperPages from "@uni-helper/vite-plugin-uni-pages";
+import UniPlatform from "@uni-helper/vite-plugin-uni-platform";
 import autoprefixer from "autoprefixer";
 import path from "node:path";
 import process from "node:process";
@@ -45,7 +46,10 @@ export default defineConfig(({ command, mode }) => {
         subPackages: ["pages-sub"],
       }),
       UniHelperLayouts(),
+      UniPlatform(),
+      //
       Uni(),
+      //
       UniPolyfill(),
       UnifiedViteWeappTailwindcssPlugin({
         rem2rpx: true,
@@ -62,6 +66,13 @@ export default defineConfig(({ command, mode }) => {
           silenceDeprecations: ["legacy-js-api"],
         },
       },
+    },
+    build: {
+      target: "es6",
+      cssTarget: "chrome61",
+    },
+    optimizeDeps: {
+      exclude: ["vue-demi"],
     },
   };
 });

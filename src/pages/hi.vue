@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import HiCounter from "@/components/HiCounter.vue";
-import { useQuery } from "@/hooks/useQuery";
+import { useQueryParams } from "@/hooks/useQueryParams";
 
 definePage({
   layout: "home",
 });
 
-const { value: name } = useQuery("name");
+const { value: name } = useQueryParams("name");
 </script>
 
 <template>
