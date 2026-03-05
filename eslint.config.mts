@@ -6,8 +6,8 @@ import {
   sortManifestJson,
   sortPagesJson,
   sortThemeJson,
+  tailwindConfig,
 } from "./eslint";
-import { tailwindConfig } from "./eslint/tailwindcss";
 
 export default antfu({
   type: "app",
