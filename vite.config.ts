@@ -1,14 +1,23 @@
+import type { AcceptedPlugin } from "postcss";
+
 import Uni from "@uni-helper/plugin-uni";
 import UniHelperLayouts from "@uni-helper/vite-plugin-uni-layouts";
 import UniHelperManifest from "@uni-helper/vite-plugin-uni-manifest";
 import UniHelperPages from "@uni-helper/vite-plugin-uni-pages";
+import autoprefixer from "autoprefixer";
 import path from "node:path";
 import process from "node:process";
+import tailwindcss from "tailwindcss";
 import { defineConfig, loadEnv } from "vite";
-
 import UniPolyfill from "vite-plugin-uni-polyfill";
+import cssMacro from "weapp-tailwindcss/css-macro/postcss";
 import { UnifiedViteWeappTailwindcssPlugin } from "weapp-tailwindcss/vite";
-import postcssPlugins from "./postcss.config";
+
+const postcssPlugins: AcceptedPlugin[] = [tailwindcss(), autoprefixer()];
+
+// 可以使用 postcss-pxtransform 来进行 px 转 rpx 的功能
+// 详见: https://tw.icebreaker.top/docs/quick-start/css-unit-transform#px-%E8%BD%AC-rpx
+postcssPlugins.push(cssMacro);
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {

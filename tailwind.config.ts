@@ -1,31 +1,19 @@
 import type { Config } from "tailwindcss";
+
 import {
+  dynamicIconsPlugin,
   getIconCollections,
   iconsPlugin,
-  dynamicIconsPlugin,
 } from "@egoist/tailwindcss-icons";
 import cssMacro from "weapp-tailwindcss/css-macro";
-import { isMp } from "./platform";
-import { getLocalCollections } from "./build/icon";
 
-console.log("tailwind.config.js", process.env.UNI_PLATFORM);
+import { getLocalCollections } from "./build/icon";
+import { isMp } from "./platform";
 
 const config: Config = {
   content: ["./index.html", "./src/**/*.{html,js,ts,jsx,tsx,vue}"],
   theme: {
-    extend: {
-      // colors: {
-      // // 你可以在这里进行颜色的扩展
-      // primary: {
-      //   'DEFAULT': 'var(--color-primary, #0089FF)',
-      //   'light-3': 'var(--color-primary-light-3, rgb(85, 199, 255))',
-      //   'light-5': 'var(--color-primary-light-5, rgb(130, 217, 255))',
-      //   'light-7': 'var(--color-primary-light-7, rgb(175, 235, 255))',
-      //   'light-9': 'var(--color-primary-light-9, rgb(219, 252, 255))',
-      //   'dark-2': 'var(--color-primary-dark-2, rgb(0, 135, 204))',
-      // },
-      // },
-    },
+    extend: {},
   },
   // https://tw.icebreaker.top/docs/quick-start/uni-app-css-macro
   plugins: [
@@ -36,14 +24,6 @@ const config: Config = {
           value: "MP-WEIXIN",
           negative: true,
         },
-        // 定义多个条件判断
-        // mv: {
-        //   value: 'H5 || MP-WEIXIN'
-        // },
-        // '-mv': {
-        //   value: 'H5 || MP-WEIXIN',
-        //   negative: true
-        // }
       },
     }),
     iconsPlugin({

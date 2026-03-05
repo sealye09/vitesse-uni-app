@@ -1,6 +1,9 @@
+overrides:
+  jiti: ^2.6.1
+
 onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@weapp-tailwindcss/merge-v3'
+  - "@parcel/watcher"
+  - "@weapp-tailwindcss/merge-v3"
   - bufferutil
   - core-js
   - esbuild
