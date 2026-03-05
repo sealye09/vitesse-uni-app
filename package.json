@@ -114,6 +114,7 @@
     "eslint-plugin-command": "^3.5.2",
     "eslint-plugin-format": "^2.0.1",
     "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-tailwindcss": "^3.18.2",
     "lefthook": "^2.1.2",
     "miniprogram-api-typings": "^5.1.1",
     "postcss": "^8.5.6",

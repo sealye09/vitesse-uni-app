@@ -12,7 +12,7 @@ function handleClickGithub() {
 </script>
 
 <template>
-  <view class="flex items-center justify-center gap-12 my-12">
+  <view class="my-12 flex items-center justify-center gap-12">
     <navigator open-type="redirect" url="/pages/index">
       <view class="i-ph-house size-8" />
     </navigator>

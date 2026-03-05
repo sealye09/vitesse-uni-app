@@ -7,6 +7,7 @@ import {
   sortPagesJson,
   sortThemeJson,
 } from "./eslint";
+import { tailwindConfig } from "./eslint/tailwindcss";
 
 export default antfu({
   type: "app",
@@ -84,5 +85,6 @@ export default antfu({
   .append(sortManifestJson())
   .append(sortPagesJson())
   .append(sortThemeJson())
+  .append(tailwindConfig())
   // append prettier config that must be the last one
   .append(prettierConfig());

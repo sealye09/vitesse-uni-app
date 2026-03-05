@@ -9,7 +9,7 @@ const { count, inc, dec } = useCount();
     <view class="btn" @click="dec()">
       <text class="i-ph-minus" />
     </view>
-    <view class="inline-block w-15 font-mono mx-4">
+    <view class="w-15 mx-4 inline-block font-mono">
       {{ count }}
     </view>
     <view class="btn" @click="inc()">
