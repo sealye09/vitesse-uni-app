@@ -4,6 +4,9 @@ import { useQueryParams } from "@/hooks/useQueryParams";
 
 definePage({
   layout: "home",
+  style: {
+    navigationBarTitleText: "Hi",
+  },
 });
 
 const { value: name } = useQueryParams("name");

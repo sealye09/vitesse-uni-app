@@ -11,12 +11,12 @@ export default defineUniPages({
     navigationBarBackgroundColor: "#000000",
     navigationBarTextStyle: "@navTxtStyle",
     navigationBarTitleText: "Vitesse-Uni",
-    navigationStyle: "custom",
+    // navigationStyle: "custom",
   },
-  // tabBar: {
-  //   backgroundColor: "@tabBgColor",
-  //   borderStyle: "@tabBorderStyle",
-  //   color: "@tabFontColor",
-  //   selectedColor: "@tabSelectedColor",
-  // },
+  tabBar: {
+    backgroundColor: "@tabBgColor",
+    borderStyle: "@tabBorderStyle",
+    color: "@tabFontColor",
+    selectedColor: "@tabSelectedColor",
+  },
 });
