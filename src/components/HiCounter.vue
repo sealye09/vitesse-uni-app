@@ -5,22 +5,35 @@ const { count, inc, dec } = useCount();
 </script>
 
 <template>
-  <view class="my-3 flex items-center justify-center">
-    <view class="btn" @click="dec()">
-      <text class="i-ph-minus" />
+  <view
+    class="mt-8 w-full max-w-[280px] overflow-hidden rounded-lg border border-border-base bg-bg-card"
+  >
+    <view class="border-b border-border-base px-4 py-3">
+      <text class="text-sm font-medium text-text-secondary">Counter</text>
     </view>
-    <view class="w-15 mx-4 inline-block font-mono">
-      {{ count }}
-    </view>
-    <view class="btn" @click="inc()">
-      <text class="i-ph-plus" />
+
+    <view class="flex items-center justify-between p-4">
+      <!-- 使用 view 模拟减少按钮 -->
+      <view
+        class="flex size-10 cursor-pointer items-center justify-center rounded-md border border-border-base bg-bg-card text-text-primary active:border-border-active active:bg-bg-active"
+        @click="dec()"
+      >
+        <view class="i-ph-minus" />
+      </view>
+
+      <view class="flex items-center justify-center">
+        <text class="text-3xl font-semibold tabular-nums text-text-primary">
+          {{ count }}
+        </text>
+      </view>
+
+      <!-- 使用 view 模拟增加按钮 -->
+      <view
+        class="flex size-10 cursor-pointer items-center justify-center rounded-md border border-border-base bg-bg-card text-text-primary active:border-border-active active:bg-bg-active"
+        @click="inc()"
+      >
+        <view class="i-ph-plus" />
+      </view>
     </view>
   </view>
 </template>
-
-<style>
-.btn {
-  @apply w-8 h-8 flex items-center justify-center rounded-full bg-teal-600
-    text-white cursor-pointer;
-}
-</style>

@@ -6,7 +6,7 @@ import ConfigProvider from "@/components/ConfigProvider.vue";
 <template>
   <ConfigProvider>
     <view
-      class="bg-[var(--bg-base)] px-10 py-20 text-center text-[var(--text-primary)]"
+      class="min-h-screen bg-[var(--bg-base)] text-center text-[var(--text-primary)]"
     >
       <slot></slot>
       <AppFooter />

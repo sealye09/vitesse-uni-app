@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useTheme } from "@/hooks/useTheme";
+
 function handleClickGithub() {
   if (window?.open) {
     window.open("https://github.com/uni-helper/vitesse-uni-app");
@@ -9,16 +11,59 @@ function handleClickGithub() {
     });
   }
 }
+
+function goHome() {
+  uni.switchTab({
+    url: "/pages/index",
+  });
+}
+
+const { toggleTheme, isDark, setNavigationBar, setTabBar } = useTheme();
+
+const switchTheme = () => {
+  toggleTheme();
+  // 切换主题后分别设置导航栏和TabBar
+  setNavigationBar();
+  setTabBar();
+};
 </script>
 
 <template>
-  <view class="my-12 flex items-center justify-center gap-12">
-    <navigator open-type="redirect" url="/pages/index">
-      <view class="i-ph-house size-8" />
-    </navigator>
+  <view class="mt-auto flex flex-col items-center pb-6 pt-8">
+    <view class="mb-6 h-px w-full max-w-[280px] bg-border-base" />
 
-    <view class="cursor-pointer" @click="handleClickGithub">
-      <view class="i-ph-github-logo size-8" />
+    <view class="flex items-center gap-6">
+      <!-- 使用 view 模拟首页按钮 -->
+      <view
+        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        @click="goHome"
+      >
+        <view class="i-ph-house text-lg text-text-secondary" />
+        <text class="text-xs text-text-tertiary">Home</text>
+      </view>
+
+      <!-- 使用 view 模拟 GitHub 按钮 -->
+      <view
+        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        @click="handleClickGithub"
+      >
+        <view class="i-ph-github-logo text-lg text-text-secondary" />
+        <text class="text-xs text-text-tertiary">GitHub</text>
+      </view>
+
+      <!-- 主题切换按钮 -->
+      <view
+        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        @click="switchTheme"
+      >
+        <view
+          class="text-lg text-text-secondary"
+          :class="isDark ? 'i-ph-moon' : 'i-ph-sun'"
+        />
+        <text class="text-xs text-text-tertiary">
+          {{ isDark ? "Light" : "Dark" }}
+        </text>
+      </view>
     </view>
   </view>
 </template>

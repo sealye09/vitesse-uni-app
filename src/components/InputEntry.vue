@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 const name = ref("");
+
 function go() {
   if (name.value) {
     uni.navigateTo({
@@ -12,27 +13,30 @@ function go() {
 </script>
 
 <template>
-  <view>
+  <view class="mt-8 w-full max-w-[280px]">
     <view
-      class="m-auto mt-5 box-border w-[250px] rounded border border-solid border-gray-200 bg-transparent px-4 py-2 text-center outline-none active:outline-none dark:border-gray-700"
+      class="w-full rounded-md border border-border-base bg-bg-card px-3 py-2.5 transition-colors focus-within:border-color-primary"
     >
       <input
         v-model="name"
         autocomplete="off"
-        class="mr-0 w-full"
+        class="w-full bg-transparent text-sm text-text-primary outline-none"
         placeholder="What's your name?"
         type="text"
       />
     </view>
-    <view>
-      <button
-        class="m-auto mt-3 w-[120rpx] rounded bg-teal-600 px-4 py-1 text-sm text-white"
-        :disabled="!name"
-        hover-class="bg-teal-700"
-        @click="go"
-      >
-        GO
-      </button>
+
+    <!-- 使用 view 模拟 button -->
+    <view
+      class="mt-4 w-full cursor-pointer rounded-md px-4 py-2.5 text-sm font-medium transition-colors"
+      :class="
+        name
+          ? 'bg-color-primary text-white active:bg-color-primary-active'
+          : 'bg-bg-disabled text-text-disabled cursor-not-allowed'
+      "
+      @click="go"
+    >
+      <text>Continue</text>
     </view>
   </view>
 </template>

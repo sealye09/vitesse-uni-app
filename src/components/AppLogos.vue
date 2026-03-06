@@ -1,11 +1,14 @@
+<script setup lang="ts"></script>
+
 <template>
-  <view class="flex cursor-default flex-col text-2xl">
-    <view
-      class="flex flex-col items-center"
-      hover-class="shadow-green-500 drop-shadow-md"
-    >
-      <image class="inline-block size-16" src="/static/logo.svg" />
-      <text class="mt-2 text-green-500">uni-helper</text>
+  <view class="mt-12 flex flex-col items-center">
+    <image alt="logo" class="mb-4 size-16" src="/static/logo.svg" />
+    <view class="flex flex-col items-center">
+      <text class="text-2xl font-semibold tracking-tight text-text-primary">
+        Vitesse
+      </text>
+      <view class="my-2 h-px w-8 bg-border-base" />
+      <text class="text-sm text-text-tertiary">uni-app Starter</text>
     </view>
   </view>
 </template>
