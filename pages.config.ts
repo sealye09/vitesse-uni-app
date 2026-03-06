@@ -1,22 +1,15 @@
 import { defineUniPages } from "@uni-helper/vite-plugin-uni-pages";
 
 export default defineUniPages({
-  // 你也可以定义 pages 字段，它具有最高的优先级。
-  // pages: [],
   globalStyle: {
-    backgroundColor: "@bgColor",
-    backgroundColorBottom: "@bgColorBottom",
-    backgroundColorTop: "@bgColorTop",
-    backgroundTextStyle: "@bgTxtStyle",
-    navigationBarBackgroundColor: "#000000",
-    navigationBarTextStyle: "@navTxtStyle",
+    navigationBarBackgroundColor: "@nav-bg-color",
+    navigationBarTextStyle: "@nav-txt-style",
     navigationBarTitleText: "Vitesse-Uni",
-    // navigationStyle: "custom",
   },
   tabBar: {
-    backgroundColor: "@tabBgColor",
-    borderStyle: "@tabBorderStyle",
-    color: "@tabFontColor",
-    selectedColor: "@tabSelectedColor",
+    backgroundColor: "@tab-bg-color",
+    borderStyle: "@tab-border-style",
+    color: "@tab-color",
+    selectedColor: "@tab-selected-color",
   },
 });
