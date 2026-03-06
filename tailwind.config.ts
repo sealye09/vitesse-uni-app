@@ -5,10 +5,10 @@ import {
   getIconCollections,
   iconsPlugin,
 } from "@egoist/tailwindcss-icons";
+import { isMp } from "@uni-helper/uni-env";
 import cssMacro from "weapp-tailwindcss/css-macro";
 
 import { getLocalCollections } from "./build/icon";
-import { isMp } from "./platform";
 
 const config: Config = {
   content: ["./index.html", "./src/**/*.{html,js,ts,jsx,tsx,vue}"],
