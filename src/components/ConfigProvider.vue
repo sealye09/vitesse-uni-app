@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onLoad } from "@dcloudio/uni-app";
+import { onShow } from "@dcloudio/uni-app";
 import { computed, provide, toRef } from "vue";
 
 import type { ThemeMode } from "@/hooks/useTheme";
@@ -15,7 +15,7 @@ const { currentTheme, theme, isDark, cssVars, initTheme } = useTheme();
 // 优先使用 props 传入的主题，否则使用 hook 中的全局主题
 const activeTheme = computed(() => props.theme || currentTheme.value);
 
-onLoad(() => {
+onShow(() => {
   initTheme();
 });
 

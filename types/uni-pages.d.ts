@@ -5,16 +5,15 @@
 
 type _LocationUrl =
   "/pages/index" |
-  "/pages/hi";
+  "/pages/hi" |
+  "/pages/me";
 
 interface NavigateToOptions {
   url: _LocationUrl;
 }
 interface RedirectToOptions extends NavigateToOptions {}
 
-interface SwitchTabOptions {
-  
-}
+interface SwitchTabOptions {}
 
 type ReLaunchOptions = NavigateToOptions | SwitchTabOptions;
 

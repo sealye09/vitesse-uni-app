@@ -4,7 +4,7 @@ import { useQueryParams } from "@/hooks/useQueryParams";
 
 definePage({
   layout: "home",
-  tabBar: { index: 1, text: "Hi" },
+  // tabBar: { index: 1, text: "Hi" },
   style: {
     navigationBarTitleText: "Hi",
   },
