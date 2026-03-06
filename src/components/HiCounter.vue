@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { useCount } from "@/hooks/useCount";
 
+defineOptions({
+  name: "HiCounter",
+  options: {
+    styleIsolation: "shared",
+  },
+});
+
 const { count, inc, dec } = useCount();
 </script>
 

@@ -37,6 +37,17 @@ export function useTheme() {
     uni.setStorageSync(THEME_STORAGE_KEY, mode);
   };
 
+  const setBackgroundColor = () => {
+    // #ifndef H5
+    uni.setBackgroundTextStyle({
+      textStyle: theme.value.backgroundTextStyle,
+    });
+    // #endif
+
+    // #ifdef H5
+    // #endif
+  };
+
   const toggleTheme = () => {
     setTheme(currentTheme.value === "light" ? "dark" : "light");
   };
@@ -54,6 +65,7 @@ export function useTheme() {
     nextTick(() => {
       setNavigationBar();
       setTabBar();
+      setBackgroundColor();
     });
   };
 
@@ -71,5 +83,6 @@ export function useTheme() {
     initTheme,
     setNavigationBar,
     setTabBar,
+    setBackgroundColor,
   };
 }

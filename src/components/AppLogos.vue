@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineOptions({
+  name: "AppLogos",
+  options: {
+    styleIsolation: "shared",
+  },
+});
+</script>
 
 <template>
   <view class="mt-12 flex flex-col items-center">

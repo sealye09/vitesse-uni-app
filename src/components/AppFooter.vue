@@ -1,6 +1,13 @@
 <script lang="ts" setup>
 import { useTheme } from "@/hooks/useTheme";
 
+defineOptions({
+  name: "AppFooter",
+  options: {
+    styleIsolation: "shared",
+  },
+});
+
 function handleClickGithub() {
   if (window?.open) {
     window.open("https://github.com/uni-helper/vitesse-uni-app");
@@ -18,19 +25,21 @@ function goHome() {
   });
 }
 
-const { toggleTheme, isDark, setNavigationBar, setTabBar } = useTheme();
+const { toggleTheme, isDark, setNavigationBar, setTabBar, setBackgroundColor } =
+  useTheme();
 
 const switchTheme = () => {
   toggleTheme();
   // 切换主题后分别设置导航栏和TabBar
   setNavigationBar();
   setTabBar();
+  setBackgroundColor();
 };
 </script>
 
 <template>
   <view class="mt-auto flex flex-col items-center pb-6 pt-8">
-    <view class="mb-6 h-px w-full max-w-[280px] bg-border" />
+    <view class="mb-6 h-px w-full max-w-[280rpx] bg-border" />
 
     <view class="flex items-center gap-6">
       <!-- 使用 view 模拟首页按钮 -->

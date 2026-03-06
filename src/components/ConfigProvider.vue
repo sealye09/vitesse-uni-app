@@ -6,6 +6,13 @@ import type { ThemeMode } from "@/hooks/useTheme";
 
 import { useTheme } from "@/hooks/useTheme";
 
+defineOptions({
+  name: "ConfigProvider",
+  options: {
+    styleIsolation: "shared",
+  },
+});
+
 const props = defineProps<{
   theme?: ThemeMode;
 }>();
@@ -26,7 +33,9 @@ provide("theme", {
 </script>
 
 <template>
-  <view :class="activeTheme" :style="cssVars">
+  <view class="h-full" :class="activeTheme" :style="cssVars">
     <slot></slot>
   </view>
 </template>
+
+<style></style>

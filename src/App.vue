@@ -13,10 +13,17 @@ onShow(() => {});
 @use "tailwindcss/components";
 @use "tailwindcss/utilities";
 
-/* 全局主题样式 */
-page,
+uni-app,
+uni-page,
+uni-page-wrapper,
 uni-page-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  height: 100%;
 }
+
+/*  #ifdef  H5  */
+// https://tw.icebreaker.top/docs/issues/toast-svg-bug
+svg {
+  display: initial;
+}
+/*  #endif  */
 </style>

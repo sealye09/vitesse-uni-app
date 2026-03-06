@@ -1,6 +1,7 @@
 import type { AcceptedPlugin } from "postcss";
 
 import Uni from "@uni-helper/plugin-uni";
+import { isApp, isH5 } from "@uni-helper/uni-env";
 import UniHelperLayouts from "@uni-helper/vite-plugin-uni-layouts";
 import UniHelperManifest from "@uni-helper/vite-plugin-uni-manifest";
 import UniHelperPages from "@uni-helper/vite-plugin-uni-pages";
@@ -8,17 +9,31 @@ import UniPlatform from "@uni-helper/vite-plugin-uni-platform";
 import autoprefixer from "autoprefixer";
 import path from "node:path";
 import process from "node:process";
+import remToRpx from "postcss-rem-to-responsive-pixel";
 import tailwindcss from "tailwindcss";
 import { defineConfig, loadEnv } from "vite";
+import ViteRestart from "vite-plugin-restart";
 import UniPolyfill from "vite-plugin-uni-polyfill";
 import cssMacro from "weapp-tailwindcss/css-macro/postcss";
 import { UnifiedViteWeappTailwindcssPlugin } from "weapp-tailwindcss/vite";
+
+const WeappTailwindcssDisabled = isH5 || isApp;
 
 const postcssPlugins: AcceptedPlugin[] = [tailwindcss(), autoprefixer()];
 
 // 可以使用 postcss-pxtransform 来进行 px 转 rpx 的功能
 // 详见: https://tw.icebreaker.top/docs/quick-start/css-unit-transform#px-%E8%BD%AC-rpx
 postcssPlugins.push(cssMacro);
+
+if (!WeappTailwindcssDisabled) {
+  postcssPlugins.push(
+    remToRpx({
+      rootValue: 32,
+      propList: ["*"],
+      transformUnit: "rpx",
+    }),
+  );
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -52,7 +67,11 @@ export default defineConfig(({ command, mode }) => {
       //
       UniPolyfill(),
       UnifiedViteWeappTailwindcssPlugin({
-        rem2rpx: true,
+        disabled: WeappTailwindcssDisabled,
+      }),
+      ViteRestart({
+        // 通过这个插件，在修改vite.config.js文件则不需要重新运行也生效配置
+        restart: ["vite.config.ts"],
       }),
     ],
     // 内联 postcss 注册 tailwindcss

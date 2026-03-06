@@ -5,7 +5,7 @@ import ConfigProvider from "@/components/ConfigProvider.vue";
 
 <template>
   <ConfigProvider>
-    <view class="min-h-screen bg-background text-center text-foreground">
+    <view class="h-full bg-background text-center text-foreground">
       <slot></slot>
       <AppFooter />
       <view class="mx-auto mt-5 text-center text-sm text-foreground opacity-25">

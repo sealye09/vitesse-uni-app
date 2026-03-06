@@ -13,7 +13,7 @@ const { value: name } = useQueryParams("name");
 </script>
 
 <template>
-  <view class="flex min-h-screen flex-col bg-background">
+  <view class="flex h-full flex-col bg-background">
     <view class="flex flex-1 flex-col items-center px-4 pt-12">
       <view class="mb-6 flex flex-col items-center">
         <text class="text-sm text-muted-foreground">Hello,</text>

@@ -5,7 +5,6 @@ import InputEntry from "@/components/InputEntry.vue";
 definePage({
   type: "home",
   layout: "home",
-  tabBar: { index: 0, text: "Home" },
   style: {
     navigationBarTitleText: "首页",
   },

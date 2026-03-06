@@ -1,6 +1,5 @@
 <script setup lang="ts">
 definePage({
-  tabBar: { index: 1, text: "Me" },
   style: {
     navigationBarTitleText: "我的",
   },
@@ -15,7 +14,7 @@ const menuItems = [
 
 function handleMenuClick(label: string) {
   uni.showToast({
-    icon: "none",
+    icon: "success",
     title: `点击了 ${label}`,
   });
 }
