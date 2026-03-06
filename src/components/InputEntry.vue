@@ -4,7 +4,7 @@ import { ref } from "vue";
 defineOptions({
   name: "InputEntry",
   options: {
-    styleIsolation: "shared",
+    virtualHost: true,
   },
 });
 

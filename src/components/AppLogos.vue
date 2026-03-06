@@ -2,7 +2,7 @@
 defineOptions({
   name: "AppLogos",
   options: {
-    styleIsolation: "shared",
+    virtualHost: true,
   },
 });
 </script>

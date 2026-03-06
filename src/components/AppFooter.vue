@@ -4,7 +4,7 @@ import { useTheme } from "@/hooks/useTheme";
 defineOptions({
   name: "AppFooter",
   options: {
-    styleIsolation: "shared",
+    virtualHost: true,
   },
 });
 

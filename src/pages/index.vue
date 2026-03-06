@@ -2,6 +2,10 @@
 import AppLogos from "@/components/AppLogos.vue";
 import InputEntry from "@/components/InputEntry.vue";
 
+defineOptions({
+  name: "IndexPage",
+});
+
 definePage({
   type: "home",
   layout: "home",

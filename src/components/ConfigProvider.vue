@@ -9,7 +9,7 @@ import { useTheme } from "@/hooks/useTheme";
 defineOptions({
   name: "ConfigProvider",
   options: {
-    styleIsolation: "shared",
+    virtualHost: true,
   },
 });
 

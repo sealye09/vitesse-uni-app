@@ -16,5 +16,6 @@ CODEOWNERS
 *-lock.yaml
 src/uni_modules
 
-./src/manifest.json
-./src/pages.json
+manifest.json
+pages.json
+uni-pages.d.ts

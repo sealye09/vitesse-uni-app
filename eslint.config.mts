@@ -20,6 +20,7 @@ export default antfu({
     "src/uni_modules",
     "manifest.json",
     "pages.json",
+    "uni-pages.d.ts",
   ],
   formatters: false,
   javascript: {

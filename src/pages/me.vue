@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  name: "MePage",
+});
+
 definePage({
   style: {
     navigationBarTitleText: "我的",
