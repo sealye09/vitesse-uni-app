@@ -39,7 +39,7 @@ const switchTheme = () => {
 
 <template>
   <view class="mt-auto flex flex-col items-center pb-6 pt-8">
-    <view class="mb-6 h-px w-full max-w-[280rpx] bg-border" />
+    <view class="mb-6 h-px w-full max-w-[280px] bg-border" />
 
     <view class="flex items-center gap-6">
       <!-- 使用 view 模拟首页按钮 -->

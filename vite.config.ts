@@ -66,8 +66,29 @@ export default defineConfig(({ command, mode }) => {
       Uni(),
       //
       UniPolyfill(),
+      // 注意：如果同时开启 px2rpx / rem2rpx，unitsToPx 会先转换成 px，后续还会继续转成 rpx。
+      // 如果希望最终输出为 px，请不要同时开启 px2rpx / rem2rpx。
       UnifiedViteWeappTailwindcssPlugin({
+        // h5 下禁用单位转换
         disabled: WeappTailwindcssDisabled,
+        rem2rpx: {
+          // 32 意味着 1rem = 32rpx = 16px
+          rootValue: 32,
+          // 默认所有属性都转化
+          propList: ["*"],
+          // 转化的单位,可以变成 px / rpx
+          transformUnit: "rpx",
+        },
+        px2rpx: {
+          platform: "weapp",
+          designWidth: 375,
+          deviceRatio: {
+            640: 2.34 / 2,
+            750: 1,
+            828: 1.81 / 2,
+            375: 2 / 1,
+          },
+        },
       }),
       ViteRestart({
         // 通过这个插件，在修改vite.config.js文件则不需要重新运行也生效配置
