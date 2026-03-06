@@ -15,12 +15,12 @@ function go() {
 <template>
   <view class="mt-8 w-full max-w-[280px]">
     <view
-      class="w-full rounded-md border border-border-base bg-bg-card px-3 py-2.5 transition-colors focus-within:border-color-primary"
+      class="w-full rounded-md border border-border bg-card px-3 py-2.5 transition-colors focus-within:border-primary"
     >
       <input
         v-model="name"
         autocomplete="off"
-        class="w-full bg-transparent text-sm text-text-primary outline-none"
+        class="w-full bg-transparent text-sm text-foreground outline-none"
         placeholder="What's your name?"
         type="text"
       />
@@ -31,8 +31,8 @@ function go() {
       class="mt-4 w-full cursor-pointer rounded-md px-4 py-2.5 text-sm font-medium transition-colors"
       :class="
         name
-          ? 'bg-color-primary text-white active:bg-color-primary-active'
-          : 'bg-bg-disabled text-text-disabled cursor-not-allowed'
+          ? 'bg-primary text-primary-foreground active:bg-primary/90'
+          : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
       "
       @click="go"
     >

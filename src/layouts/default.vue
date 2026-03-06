@@ -5,14 +5,10 @@ import ConfigProvider from "@/components/ConfigProvider.vue";
 
 <template>
   <ConfigProvider>
-    <view
-      class="min-h-screen bg-[var(--bg-base)] text-center text-[var(--text-primary)]"
-    >
+    <view class="min-h-screen bg-background text-center text-foreground">
       <slot></slot>
       <AppFooter />
-      <view
-        class="mx-auto mt-5 text-center text-sm text-[var(--text-secondary)] opacity-25"
-      >
+      <view class="mx-auto mt-5 text-center text-sm text-foreground opacity-25">
         [Default Layout]
       </view>
     </view>

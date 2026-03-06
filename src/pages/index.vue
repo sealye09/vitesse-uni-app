@@ -13,7 +13,7 @@ definePage({
 </script>
 
 <template>
-  <view class="flex flex-col bg-bg-base">
+  <view class="flex flex-col bg-background">
     <view class="flex flex-1 flex-col items-center px-4 pt-8">
       <AppLogos />
       <InputEntry />

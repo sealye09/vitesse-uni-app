@@ -5,17 +5,11 @@ import ConfigProvider from "@/components/ConfigProvider.vue";
 
 <template>
   <ConfigProvider>
-    <view
-      class="min-h-screen text-center"
-      :style="{ backgroundColor: 'var(--bg-base)' }"
-    >
+    <view class="min-h-screen bg-background text-center text-foreground">
       <slot></slot>
 
       <AppFooter />
-      <view
-        class="mx-auto mt-5 text-center text-sm opacity-25"
-        :style="{ color: 'var(--text-secondary)' }"
-      >
+      <view class="mx-auto mt-5 text-center text-sm text-foreground opacity-25">
         [Home Layout]
       </view>
     </view>
