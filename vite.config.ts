@@ -9,7 +9,6 @@ import UniPlatform from "@uni-helper/vite-plugin-uni-platform";
 import autoprefixer from "autoprefixer";
 import path from "node:path";
 import process from "node:process";
-import remToRpx from "postcss-rem-to-responsive-pixel";
 import tailwindcss from "tailwindcss";
 import { defineConfig, loadEnv } from "vite";
 import ViteRestart from "vite-plugin-restart";
@@ -24,16 +23,6 @@ const postcssPlugins: AcceptedPlugin[] = [tailwindcss(), autoprefixer()];
 // 可以使用 postcss-pxtransform 来进行 px 转 rpx 的功能
 // 详见: https://tw.icebreaker.top/docs/quick-start/css-unit-transform#px-%E8%BD%AC-rpx
 postcssPlugins.push(cssMacro);
-
-if (!WeappTailwindcssDisabled) {
-  postcssPlugins.push(
-    remToRpx({
-      rootValue: 32,
-      propList: ["*"],
-      transformUnit: "rpx",
-    }),
-  );
-}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
