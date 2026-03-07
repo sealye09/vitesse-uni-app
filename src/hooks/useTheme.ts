@@ -1,8 +1,7 @@
 import { computed, nextTick, ref } from "vue";
 
+import themeConfig from "@/theme.json";
 import { getSystemTheme, toCssVars } from "@/utils";
-
-import themeConfig from "../theme.json";
 
 export type ThemeMode = "light" | "dark";
 

@@ -26,6 +26,8 @@ postcssPlugins.push(cssMacro);
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
+  const cwd = process.cwd();
+
   // mode: 区分生产环境还是开发环境
   console.log("command, mode -> ", command, mode);
   // pnpm dev:h5 时得到 => serve development
@@ -38,11 +40,16 @@ export default defineConfig(({ command, mode }) => {
   const { UNI_PLATFORM } = process.env;
   console.log("UNI_PLATFORM -> ", UNI_PLATFORM);
 
-  const env = loadEnv(mode, path.resolve(process.cwd(), "env"));
+  const env = loadEnv(mode, path.resolve(cwd, "env"));
   console.log("环境变量 env -> ", env);
 
   return {
-    envDir: path.resolve(process.cwd(), "env"),
+    envDir: path.resolve(cwd, "env"),
+    resolve: {
+      alias: {
+        "@": path.resolve(cwd, "src"),
+      },
+    },
     plugins: [
       UniHelperManifest(),
       UniHelperPages({

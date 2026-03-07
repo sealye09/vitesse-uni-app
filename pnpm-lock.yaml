@@ -6711,7 +6711,7 @@ snapshots:
       '@babel/traverse': 7.29.0
       '@babel/types': 7.25.6
       convert-source-map: 2.0.0
-      debug: 4.3.7
+      debug: 4.4.3
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.1
