@@ -58,11 +58,6 @@ export function useTheme() {
 
     // #ifdef H5
     document.body.style.backgroundColor = theme.value.background;
-    const html = document.querySelector("html");
-    html?.setAttribute("style", `background-color: ${theme.value.background}`);
-
-    const page = document.querySelector("page");
-    page?.setAttribute("style", `background-color: ${theme.value.background}`);
     // #endif
   };
 

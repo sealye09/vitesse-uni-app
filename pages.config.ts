@@ -1,7 +1,5 @@
 import { defineUniPages } from "@uni-helper/vite-plugin-uni-pages";
 
-import { tabbarList } from "./src/tabbar";
-
 export default defineUniPages({
   globalStyle: {
     navigationBarTitleText: "Vitesse-Uni",
@@ -15,6 +13,22 @@ export default defineUniPages({
     borderStyle: "@tab-border-style",
     color: "@tab-color",
     selectedColor: "@tab-selected-color",
-    list: tabbarList,
+    list: [
+      {
+        // index is required
+        index: 0,
+        text: "Home",
+        pagePath: "pages/index",
+        iconPath: "static/tabbar/home.png",
+        selectedIconPath: "static/tabbar/home-active.png",
+      },
+      {
+        index: 1,
+        text: "Me",
+        pagePath: "pages/me",
+        iconPath: "static/tabbar/me.png",
+        selectedIconPath: "static/tabbar/me-active.png",
+      },
+    ],
   },
 });
