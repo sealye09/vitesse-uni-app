@@ -115,6 +115,8 @@
     "ngClass",
     "class:list",
     "hover-class",
-    "hoverCclass"
+    "hoverCclass",
+    "placeholder-class",
+    "placeholderClass"
   ]
 }

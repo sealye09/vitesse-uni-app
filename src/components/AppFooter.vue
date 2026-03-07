@@ -38,35 +38,32 @@ const switchTheme = () => {
 </script>
 
 <template>
-  <view class="mt-auto flex flex-col items-center pb-6 pt-8">
+  <view class="mt-auto flex flex-col items-center py-6">
     <view class="mb-6 h-px w-full max-w-[280px] bg-border" />
 
     <view class="flex items-center gap-6">
-      <!-- 使用 view 模拟首页按钮 -->
       <view
-        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        class="flex cursor-pointer flex-col items-center gap-2 p-4"
         @click="goHome"
       >
-        <view class="i-ph-house text-lg text-muted-foreground" />
+        <view class="i-ph-house text-2xl text-muted-foreground" />
         <text class="text-xs text-muted-foreground">Home</text>
       </view>
 
-      <!-- 使用 view 模拟 GitHub 按钮 -->
       <view
-        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        class="flex cursor-pointer flex-col items-center gap-2 p-4"
         @click="handleClickGithub"
       >
-        <view class="i-ph-github-logo text-lg text-muted-foreground" />
+        <view class="i-ph-github-logo text-2xl text-muted-foreground" />
         <text class="text-xs text-muted-foreground">GitHub</text>
       </view>
 
-      <!-- 主题切换按钮 -->
       <view
-        class="flex cursor-pointer flex-col items-center gap-1.5 active:opacity-70"
+        class="flex cursor-pointer flex-col items-center gap-2 p-4"
         @click="switchTheme"
       >
         <view
-          class="text-lg text-muted-foreground"
+          class="text-2xl text-muted-foreground"
           :class="isDark ? 'i-ph-moon' : 'i-ph-sun'"
         />
         <text class="text-xs text-muted-foreground">

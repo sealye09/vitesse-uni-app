@@ -10,6 +10,7 @@ definePage({
   type: "home",
   layout: "home",
   style: {
+    enablePullDownRefresh: true,
     navigationBarTitleText: "首页",
   },
 });

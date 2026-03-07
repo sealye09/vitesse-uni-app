@@ -42,9 +42,27 @@ export function useTheme() {
     uni.setBackgroundTextStyle({
       textStyle: theme.value.backgroundTextStyle,
     });
+    uni.setBackgroundColor({
+      backgroundColor: theme.value.background,
+    });
+    // #endif
+
+    // #ifdef MP-WEIXIN
+    // @ts-expect-error 文档没有这个方法，但是可以生效
+    wx.setPageStyle({
+      style: {
+        backgroundColor: theme.value.background,
+      },
+    });
     // #endif
 
     // #ifdef H5
+    document.body.style.backgroundColor = theme.value.background;
+    const html = document.querySelector("html");
+    html?.setAttribute("style", `background-color: ${theme.value.background}`);
+
+    const page = document.querySelector("page");
+    page?.setAttribute("style", `background-color: ${theme.value.background}`);
     // #endif
   };
 

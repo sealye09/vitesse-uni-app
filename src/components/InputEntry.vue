@@ -29,13 +29,14 @@ function go() {
         autocomplete="off"
         class="bg-transparent text-sm text-foreground outline-none"
         placeholder="What's your name?"
+        placeholder-class="text-muted-foreground"
         type="text"
       />
     </view>
 
     <!-- 使用 view 模拟 button -->
     <view
-      class="mt-4 cursor-pointer rounded-md px-4 py-2.5 text-sm font-medium transition-colors"
+      class="mt-4 cursor-pointer rounded-md px-4 py-2.5 text-center text-sm font-medium transition-colors"
       :class="
         name
           ? 'bg-primary text-primary-foreground active:bg-primary/90'

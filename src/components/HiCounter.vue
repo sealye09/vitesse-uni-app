@@ -15,7 +15,7 @@ const { count, inc, dec } = useCount();
   <view
     class="mt-8 w-full max-w-[280px] overflow-hidden rounded-lg border border-border bg-card"
   >
-    <view class="border-b border-border px-4 py-3">
+    <view class="border-b border-border px-4 py-3 text-center">
       <text class="text-sm font-medium text-muted-foreground">Counter</text>
     </view>
 
