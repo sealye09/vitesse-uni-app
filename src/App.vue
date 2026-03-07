@@ -1,8 +1,4 @@
-<script setup lang="ts">
-import { onShow } from "@dcloudio/uni-app";
-
-onShow(() => {});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <slot></slot>

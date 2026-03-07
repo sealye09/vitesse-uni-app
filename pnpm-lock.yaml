@@ -11,6 +11,12 @@ importers:
 
   .:
     dependencies:
+      '@alova/adapter-uniapp':
+        specifier: ^1.0.3
+        version: 1.2.2(alova@3.5.1)
+      '@alova/shared':
+        specifier: ^1.3.2
+        version: 1.3.2
       '@dcloudio/uni-app':
         specifier: 3.0.0-4080720251210001
         version: 3.0.0-4080720251210001(@dcloudio/types@3.4.19)(@vueuse/core@9.13.0(vue@3.5.29(typescript@5.8.3)))(postcss@8.5.8)(rollup@4.59.0)(ts-node@10.9.2(@types/node@24.12.0)(typescript@5.8.3))(vue@3.5.29(typescript@5.8.3))
@@ -59,9 +65,6 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4080720251210001
         version: 3.0.0-4080720251210001(@vueuse/core@9.13.0(vue@3.5.29(typescript@5.8.3)))(postcss@8.5.8)(rollup@4.59.0)(ts-node@10.9.2(@types/node@24.12.0)(typescript@5.8.3))(vue@3.5.29(typescript@5.8.3))
-      '@uni-helper/uni-network':
-        specifier: ^0.23.1
-        version: 0.23.1(@vueuse/core@9.13.0(vue@3.5.29(typescript@5.8.3)))(vue@3.5.29(typescript@5.8.3))
       '@uni-helper/uni-use':
         specifier: ^0.19.17
         version: 0.19.17(postcss@8.5.8)(rollup@4.59.0)(ts-node@10.9.2(@types/node@24.12.0)(typescript@5.8.3))(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3))
@@ -71,6 +74,9 @@ importers:
       '@weapp-tailwindcss/merge-v3':
         specifier: ^0.1.6
         version: 0.1.6
+      alova:
+        specifier: ^3.0.3
+        version: 3.5.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -231,6 +237,14 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@alova/adapter-uniapp@1.2.2':
+    resolution: {integrity: sha512-O3Z4gEBMZWx6d2FTYdpQfR3Gb8YcC9o9RZWGoRmrJuvv6iJZUGXJLGQQXt5NMON9ON214nsgaQh4fH+D4ck9/Q==}
+    peerDependencies:
+      alova: '>=2.16.2'
+
+  '@alova/shared@1.3.2':
+    resolution: {integrity: sha512-1XvDLWgYpVZ99MmLl1f3Fw4T6S6pPYk5afz5cwRVjuq8JXEGsDn9IygDKfvRyWqkqCBx7Jif07LIct1O+MVEow==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -1231,9 +1245,6 @@ packages:
 
   '@dcloudio/types@3.4.19':
     resolution: {integrity: sha512-1foayOFEAQ+jnQLt3ACsovCNjer3/fXn1I2VBpmDOzs2nk/n4UHwRLAxZV/RpxRqaGOPEvKrO/Pq+VI6sAmuRw==}
-
-  '@dcloudio/types@3.4.29':
-    resolution: {integrity: sha512-7uBInqqYLoLmQMqlzW4FsYCEHTUgTkrtZVsFGgQnJT7ZCA12U9y0ovrqAM1ZWkLruHYfOS7xIqO77Who6UBLJg==}
 
   '@dcloudio/uni-app-harmony@3.0.0-4080720251210001':
     resolution: {integrity: sha512-tJjuOq/TJD4rdOE8vAtuIQbRlHeSnu0yt0pFjtRBi4ypZ1h15lxFB9cwFzgcpgI+06ZsK5SZb30IpmjUKr5NYA==}
@@ -2526,12 +2537,6 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/lodash.merge@4.6.9':
-    resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
-
-  '@types/lodash@4.17.24':
-    resolution: {integrity: sha512-gIW7lQLZbue7lRSWEFql49QJJWThrTFFeIMJdp3eH4tKoxm1OvEPg02rm4wCCSHS0cL3/Fizimb35b7k8atwsQ==}
-
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
 
@@ -2654,21 +2659,6 @@ packages:
 
   '@uni-helper/uni-env@0.1.8':
     resolution: {integrity: sha512-oZQisgM5sFarGrswKHJvS5S7xNMXLjcBcPTKp2gzLMon+chdHiKua1+Hlqe/NX79Re35W4A6/QHDrw9cZ5AVGQ==}
-
-  '@uni-helper/uni-network@0.23.1':
-    resolution: {integrity: sha512-B06frlUKtBLpdYG1/a0lio0Kr2hzlPWc9dqZeNN3ejCHzCjUTxmcDmgU+DhLtmANaUuUBkodqqL0bBVPki/yzA==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0
-      '@vueuse/core': ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-      vue: ^2.6.0 || ^2.7.0 || ^3.2.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-      '@vueuse/core':
-        optional: true
-      vue:
-        optional: true
 
   '@uni-helper/uni-types@1.0.0-alpha.7':
     resolution: {integrity: sha512-dpKIPz10TIYdVkw8GTzN6fdfUlzJFm82sNmxztBQyhe02+tGm/QUrgZO2A0iEPko505XqCN4u6IbczOD2f1pzA==}
@@ -2940,6 +2930,10 @@ packages:
 
   alien-signals@3.1.2:
     resolution: {integrity: sha512-d9dYqZTS90WLiU0I5c6DHj/HcKkF8ZyGN3G5x8wSbslulz70KOxaqCT0hQCo9KOyhVqzqGojvNdJXoTumZOtcw==}
+
+  alova@3.5.1:
+    resolution: {integrity: sha512-avrWPyFFWW51YLoy0S3OleNw1BV0GqNI+DSdWHfFbAoKZp80cXCCc7OtjA6OWeyhCOMglUMwo9O8j5huwnzFtQ==}
+    engines: {node: '>= 18.0.0'}
 
   ansi-escapes@4.3.2:
     resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
@@ -3984,9 +3978,6 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
 
-  fast-decode-uri-component@1.0.1:
-    resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
-
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -4002,9 +3993,6 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
-
-  fast-querystring@1.1.2:
-    resolution: {integrity: sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==}
 
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
@@ -5729,6 +5717,9 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
+  rate-limiter-flexible@5.0.5:
+    resolution: {integrity: sha512-+/dSQfo+3FYwYygUs/V2BBdwGa9nFtakDwKt4l0bnvNB53TNT++QSFewwHX9qXrZJuMe9j+TUaU21lm5ARgqdQ==}
+
   raw-body@2.5.2:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
@@ -5971,10 +5962,6 @@ packages:
   stack-utils@2.0.6:
     resolution: {integrity: sha512-XlkWvfIm6RmsWtNJx+uqtKLS8eqFbxUg0ZzLXqY0caEy9l7hruX8IpiDnjsLavoBgqCCR71TqWO8MaXYheJ3RQ==}
     engines: {node: '>=10'}
-
-  statuses-es@2.0.6:
-    resolution: {integrity: sha512-MNbejKdhYUwxsiupoRli1XOb9WSaGLtoE6130mfjAXjHp5AV3cCdCTYzRbIV1qXLXq1uRHvs5J9jmR3tPZKDqw==}
-    engines: {node: '>= 0.8'}
 
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
@@ -6620,6 +6607,12 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@alova/adapter-uniapp@1.2.2(alova@3.5.1)':
+    dependencies:
+      alova: 3.5.1
+
+  '@alova/shared@1.3.2': {}
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -7784,8 +7777,6 @@ snapshots:
       postcss: 8.5.8
 
   '@dcloudio/types@3.4.19': {}
-
-  '@dcloudio/types@3.4.29': {}
 
   '@dcloudio/uni-app-harmony@3.0.0-4080720251210001(@vueuse/core@9.13.0(vue@3.5.29(typescript@5.8.3)))(postcss@8.5.8)(rollup@4.59.0)(ts-node@10.9.2(@types/node@24.12.0)(typescript@5.8.3))(vite@5.2.8(@types/node@24.12.0)(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))(vue@3.5.29(typescript@5.8.3))':
     dependencies:
@@ -9571,12 +9562,6 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/lodash.merge@4.6.9':
-    dependencies:
-      '@types/lodash': 4.17.24
-
-  '@types/lodash@4.17.24': {}
-
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -9734,18 +9719,6 @@ snapshots:
   '@uni-helper/uni-env@0.1.8':
     dependencies:
       std-env: 3.10.0
-
-  '@uni-helper/uni-network@0.23.1(@vueuse/core@9.13.0(vue@3.5.29(typescript@5.8.3)))(vue@3.5.29(typescript@5.8.3))':
-    dependencies:
-      '@dcloudio/types': 3.4.29
-      '@types/lodash.merge': 4.6.9
-      fast-querystring: 1.1.2
-      lodash.merge: 4.6.2
-      statuses-es: 2.0.6
-      vue-demi: 0.14.10(vue@3.5.29(typescript@5.8.3))
-    optionalDependencies:
-      '@vueuse/core': 9.13.0(vue@3.5.29(typescript@5.8.3))
-      vue: 3.5.29(typescript@5.8.3)
 
   '@uni-helper/uni-types@1.0.0-alpha.7(@uni-helper/uni-app-types@1.0.0-alpha.7(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3)))(@uni-helper/uni-cloud-types@1.0.0-alpha.7(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3)))(@uni-helper/uni-ui-types@1.0.0-alpha.7(@uni-helper/uni-app-types@1.0.0-alpha.7(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3)))(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3)))(typescript@5.8.3)(vue@3.5.29(typescript@5.8.3))':
     dependencies:
@@ -10138,6 +10111,11 @@ snapshots:
       uri-js: 4.4.1
 
   alien-signals@3.1.2: {}
+
+  alova@3.5.1:
+    dependencies:
+      '@alova/shared': 1.3.2
+      rate-limiter-flexible: 5.0.5
 
   ansi-escapes@4.3.2:
     dependencies:
@@ -11313,8 +11291,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  fast-decode-uri-component@1.0.1: {}
-
   fast-deep-equal@3.1.3: {}
 
   fast-diff@1.3.0: {}
@@ -11330,10 +11306,6 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
-
-  fast-querystring@1.1.2:
-    dependencies:
-      fast-decode-uri-component: 1.0.1
 
   fastq@1.20.1:
     dependencies:
@@ -13436,6 +13408,8 @@ snapshots:
 
   range-parser@1.2.1: {}
 
+  rate-limiter-flexible@5.0.5: {}
+
   raw-body@2.5.2:
     dependencies:
       bytes: 3.1.2
@@ -13717,8 +13691,6 @@ snapshots:
   stack-utils@2.0.6:
     dependencies:
       escape-string-regexp: 2.0.0
-
-  statuses-es@2.0.6: {}
 
   statuses@2.0.1: {}
 

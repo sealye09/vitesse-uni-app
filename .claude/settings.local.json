@@ -11,9 +11,10 @@
       "Bash(tree:*)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Skill(frontend-design:*)"
+      "Skill(frontend-design:*)",
+      "mcp__context7__query-docs"
     ],
-    "deny": [],
-    "ask": []
+    "ask": [],
+    "deny": []
   }
 }

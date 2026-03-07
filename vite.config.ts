@@ -45,6 +45,15 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     envDir: path.resolve(cwd, "env"),
+    server: {
+      proxy: {
+        "/api": {
+          target: env.VITE_SERVER_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
+    },
     resolve: {
       alias: {
         "@": path.resolve(cwd, "src"),
