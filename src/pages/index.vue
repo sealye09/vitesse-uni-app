@@ -64,10 +64,10 @@ const { send: handleGetPublicPosts } = useRequest(getPublicPosts, {
 // 获取私有文章（需要授权）
 const { send: handleGetPrivatePosts } = useRequest(getPrivatePosts, {
   immediate: false,
-}).onSuccess(({ data: res }) => {
-  console.log("私有文章:", res);
+}).onSuccess(({ data }) => {
+  console.log("私有文章:", data);
   uni.showToast({
-    title: `获取到 ${res.data?.length || 0} 篇文章`,
+    title: `获取到 ${data.data?.length || 0} 篇文章`,
     icon: "success",
   });
 });
@@ -83,10 +83,10 @@ const { send: handleTestExpireToken } = useRequest(() => testExpireToken(), {
 // 手动刷新 Token
 const { send: handleRefreshToken } = useRequest(() => refreshToken(), {
   immediate: false,
-}).onSuccess((res) => {
-  console.log("刷新 Token 成功:", res);
-  setToken(res.data.data.token);
-  setRefreshToken(res.data.data.refreshToken);
+}).onSuccess(({ data }) => {
+  console.log("刷新 Token 成功:", data);
+  setToken(data.data.token);
+  setRefreshToken(data.data.refreshToken);
   uni.showToast({ title: "Token 已刷新", icon: "success" });
 });
 
