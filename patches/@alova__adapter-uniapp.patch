@@ -1,0 +1,69 @@
+diff --git a/dist/alova-adapter-uniapp.esm.js b/dist/alova-adapter-uniapp.esm.js
+index ea666c4d5841ce1b22313cb0f4aa8b4ac20dbaf1..78b1e9405d961dd142a60050ae09ae1079df8dc5 100644
+--- a/dist/alova-adapter-uniapp.esm.js
++++ b/dist/alova-adapter-uniapp.esm.js
+@@ -52,7 +52,7 @@ const requestAdapter = (elements, method) => {
+                 formData,
+                 timeout,
+                 success: res => resolve(res),
+-                fail: reason => reject(new Error(reason.errMsg)),
++                fail: reason => reject(reason),
+                 complete: noop
+             }));
+             // 监听上传进度
+@@ -70,7 +70,7 @@ const requestAdapter = (elements, method) => {
+                 header,
+                 timeout,
+                 success: res => resolve(res),
+-                fail: reason => reject(new Error(reason.errMsg)),
++                fail: reason => reject(reason),
+                 complete: noop
+             }));
+             // 监听下载进度
+@@ -90,7 +90,7 @@ const requestAdapter = (elements, method) => {
+                 method: type,
+                 timeout,
+                 success: res => resolve(res),
+-                fail: reason => reject(new Error(reason.errMsg))
++                fail: reason => reject(reason)
+             });
+         }
+     });
+diff --git a/dist/alova-adapter-uniapp.umd.js b/dist/alova-adapter-uniapp.umd.js
+index 4e11514a3b5f79cc2abc12d3c18ad68ac0065fa9..2f7ed4ed1ca61bc73d9d165b6d341a6a3ee8e6c2 100644
+--- a/dist/alova-adapter-uniapp.umd.js
++++ b/dist/alova-adapter-uniapp.umd.js
+@@ -60,7 +60,7 @@
+ 	                formData,
+ 	                timeout,
+ 	                success: res => resolve(res),
+-	                fail: reason => reject(new Error(reason.errMsg)),
++	                fail: reason => reject(reason),
+ 	                complete: noop
+ 	            }));
+ 	            // 监听上传进度
+@@ -78,7 +78,7 @@
+ 	                header,
+ 	                timeout,
+ 	                success: res => resolve(res),
+-	                fail: reason => reject(new Error(reason.errMsg)),
++	                fail: reason => reject(reason),
+ 	                complete: noop
+ 	            }));
+ 	            // 监听下载进度
+@@ -98,7 +98,7 @@
+ 	                method: type,
+ 	                timeout,
+ 	                success: res => resolve(res),
+-	                fail: reason => reject(new Error(reason.errMsg))
++	                fail: reason => reject(reason)
+ 	            });
+ 	        }
+ 	    });
+diff --git a/dist/alova-adapter-uniapp.umd.min.js b/dist/alova-adapter-uniapp.umd.min.js
+index e3acc73e27d71ab62e91c3b06bcf178267990614..a2937c6b878b297ed73c3b0ae16536c7ac61ec0c 100644
+--- a/dist/alova-adapter-uniapp.umd.min.js
++++ b/dist/alova-adapter-uniapp.umd.min.js
+@@ -1 +1 @@
+-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("alova/vue")):"function"==typeof define&&define.amd?define(["exports","alova/vue"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).AlovaAdapterUniapp={},e["alova/vue"])}(this,(function(e,t){"use strict";function o(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var r=o(t);const a=()=>{},s=(e,t)=>{const{url:o,data:r,type:s,headers:n}=e;let u,d=a,i=a;const l=new Promise(((e,l)=>{const{config:c}=t,{requestType:p,timeout:f}=c;if("upload"===p){const t={},s={};h=r,"[object Object]"===Object.prototype.toString.call(h)&&Object.keys(r).forEach((e=>{["name","files","file","filePath"].includes(e)?s[e]=r[e]:t[e]=r[e]}));const d=u=uni.uploadFile({...c,...s,name:s.name,url:o,header:n,formData:t,timeout:f,success:t=>e(t),fail:e=>l(new Error(e.errMsg)),complete:a});i=e=>{d.onProgressUpdate((({totalBytesSent:t,totalBytesExpectedToSend:o})=>{e(o,t)}))}}else if("download"===p){const t=u=uni.downloadFile({...c,url:o,header:n,timeout:f,success:t=>e(t),fail:e=>l(new Error(e.errMsg)),complete:a});d=e=>{t.onProgressUpdate((({totalBytesWritten:t,totalBytesExpectedToWrite:o})=>{e(o,t)}))}}else u=uni.request({...c,url:o,data:r,header:n,method:s,timeout:f,success:t=>e(t),fail:e=>l(new Error(e.errMsg))});var h}));return{response:()=>l,headers:()=>l.then((e=>e.header||{})),abort:()=>{u.abort()},onDownload:d,onUpload:i}};var n={...r.default,effectRequest(e){const t=e.handler;return e.handler=(...e)=>{e.length>0?t(...e):setTimeout((()=>t(...e)),100)},r.default.effectRequest(e)}},u={get:e=>uni.getStorageSync(e),set(e,t){uni.setStorageSync(e,t)},remove(e){uni.removeStorageSync(e)}};e.default=function({mockRequest:e}={}){return{statesHook:n,requestAdapter:e||s,storageAdapter:u}},e.uniappMockResponse=({status:e,body:t},o,r)=>{const{requestType:a}=r.config,s={};if("upload"===a)return{response:{data:t,statusCode:e},headers:s};if("download"===a){return{response:{tempFilePath:200===e?t:"",statusCode:e},headers:s}}return{response:{data:t,statusCode:e,header:s,cookies:[]},headers:s}},e.uniappRequestAdapter=s,e.uniappStorageAdapter=u,Object.defineProperty(e,"__esModule",{value:!0})}));
++!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("alova/vue")):"function"==typeof define&&define.amd?define(["exports","alova/vue"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).AlovaAdapterUniapp={},e["alova/vue"])}(this,(function(e,t){"use strict";function o(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var r=o(t);const a=()=>{},s=(e,t)=>{const{url:o,data:r,type:s,headers:n}=e;let u,d=a,i=a;const l=new Promise(((e,l)=>{const{config:c}=t,{requestType:p,timeout:f}=c;if("upload"===p){const t={},s={};h=r,"[object Object]"===Object.prototype.toString.call(h)&&Object.keys(r).forEach((e=>{["name","files","file","filePath"].includes(e)?s[e]=r[e]:t[e]=r[e]}));const d=u=uni.uploadFile({...c,...s,name:s.name,url:o,header:n,formData:t,timeout:f,success:t=>e(t),fail:e=>l(e),complete:a});i=e=>{d.onProgressUpdate((({totalBytesSent:t,totalBytesExpectedToSend:o})=>{e(o,t)}))}}else if("download"===p){const t=u=uni.downloadFile({...c,url:o,header:n,timeout:f,success:t=>e(t),fail:e=>l(e),complete:a});d=e=>{t.onProgressUpdate((({totalBytesWritten:t,totalBytesExpectedToWrite:o})=>{e(o,t)}))}}else u=uni.request({...c,url:o,data:r,header:n,method:s,timeout:f,success:t=>e(t),fail:e=>l(e)});var h}));return{response:()=>l,headers:()=>l.then((e=>e.header||{})),abort:()=>{u.abort()},onDownload:d,onUpload:i}};var n={...r.default,effectRequest(e){const t=e.handler;return e.handler=(...e)=>{e.length>0?t(...e):setTimeout((()=>t(...e)),100)},r.default.effectRequest(e)}},u={get:e=>uni.getStorageSync(e),set(e,t){uni.setStorageSync(e,t)},remove(e){uni.removeStorageSync(e)}};e.default=function({mockRequest:e}={}){return{statesHook:n,requestAdapter:e||s,storageAdapter:u}},e.uniappMockResponse=({status:e,body:t},o,r)=>{const{requestType:a}=r.config,s={};if("upload"===a)return{response:{data:t,statusCode:e},headers:s};if("download"===a){return{response:{tempFilePath:200===e?t:"",statusCode:e},headers:s}}return{response:{data:t,statusCode:e,header:s,cookies:[]},headers:s}},e.uniappRequestAdapter=s,e.uniappStorageAdapter=u,Object.defineProperty(e,"__esModule",{value:!0})}));

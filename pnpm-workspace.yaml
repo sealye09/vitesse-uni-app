@@ -3,6 +3,9 @@ publicPackageEngineStrict: false
 overrides:
   jiti: ^2.6.1
 
+patchedDependencies:
+  "@alova/adapter-uniapp": patches/@alova__adapter-uniapp.patch
+
 onlyBuiltDependencies:
   - "@parcel/watcher"
   - "@weapp-tailwindcss/merge-v3"
