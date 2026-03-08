@@ -28,7 +28,7 @@ function generateToken() {
 
 // 模拟延迟 (2-5秒)
 function delay(ms?: number) {
-  const randomMs = ms || Math.floor(Math.random() * 1500) + 1000;
+  const randomMs = ms || Math.floor(Math.random() * 1500) + 10000;
   return new Promise((resolve) => setTimeout(resolve, randomMs));
 }
 

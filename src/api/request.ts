@@ -127,16 +127,17 @@ export const alova = createAlova({
       const { meta } = method;
       const { showToast = true } = meta || {};
 
+      let msg = "请求失败";
       // 网络错误处理
-      let message = "网络错误";
-      if (error.message?.includes("timeout")) {
-        message = "请求超时";
-      } else if (error.message?.includes("Network Error")) {
-        message = "网络不可用";
+      const { message = "请求失败", errMsg = "请求失败" } = error;
+      if (message?.includes("timeout") || errMsg?.includes("timeout")) {
+        msg = "请求超时";
+      } else if (message?.includes("network") || errMsg?.includes("network")) {
+        msg = "网络不可用";
       }
 
       if (showToast) {
-        uni.showToast({ title: message, icon: "none" });
+        uni.showToast({ title: msg, icon: "none" });
       }
 
       console.error(error);
