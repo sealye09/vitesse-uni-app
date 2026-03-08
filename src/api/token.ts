@@ -13,7 +13,24 @@ export const getRefreshToken = () =>
 export const removeRefreshToken = () =>
   uni.removeStorageSync(STORAGE_REFRESH_TOKEN_KEY);
 
-export const clearToken = () => {
+export const clearTokens = () => {
   removeToken();
   removeRefreshToken();
+};
+
+export const setTokens = ({
+  token,
+  refreshToken,
+}: Partial<{ token: string; refreshToken: string }>) => {
+  let count = 0;
+  if (token) {
+    setToken(token);
+    count++;
+  }
+  if (refreshToken) {
+    setRefreshToken(refreshToken);
+    count++;
+  }
+
+  return count;
 };

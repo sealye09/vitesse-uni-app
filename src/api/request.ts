@@ -13,7 +13,7 @@ import type { IApiResponse } from "./types";
 import { transformResponse } from "./config";
 import { toLoginPage } from "./pages";
 import { UserService } from "./services/user";
-import { getToken, removeToken, setRefreshToken, setToken } from "./token";
+import { getToken, removeToken, setTokens } from "./token";
 
 /**
  * 创建 token 认证策略
@@ -28,14 +28,7 @@ const { onAuthRequired, onResponseRefreshToken } =
       console.log("login inceptors -> ", response);
       const data = (response?.data ||
         {}) as IApiResponse<IUserService.LoginResponse>;
-      const { token, refreshToken } = data.data || {};
-
-      if (token) {
-        setToken(token);
-      }
-      if (refreshToken) {
-        setRefreshToken(refreshToken);
-      }
+      setTokens(data.data);
     },
     logout: () => {
       console.log("logout inceptors");
@@ -58,15 +51,8 @@ const { onAuthRequired, onResponseRefreshToken } =
         console.log("刷新 token success -->", response, method);
         try {
           const res = await UserService.refreshToken();
-          const { token, refreshToken: _refreshToken } = res.data;
-          if (token) {
-            setToken(token);
-          } else {
-            throw new Error("刷新 token 失败");
-          }
-          if (_refreshToken) {
-            setRefreshToken(_refreshToken);
-          } else {
+          const count = setTokens(res.data);
+          if (count !== 2) {
             throw new Error("刷新 token 失败");
           }
         } catch (error) {
