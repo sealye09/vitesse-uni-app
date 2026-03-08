@@ -1,4 +1,6 @@
-import type { ApiResponse } from "./type";
+import { isArray, isString, merge } from "lodash-es";
+
+import type { IApiResponse } from "./types";
 
 /**
  * 响应结构配置
@@ -23,19 +25,42 @@ export const defaultResponseConfig: ResponseConfig = {
  * @param config 响应字段配置
  */
 export function transformResponse(
-  response: any,
+  response: string | ArrayBuffer | AnyObject,
   config: Partial<ResponseConfig> = {},
-): ApiResponse {
-  const cfg = { ...defaultResponseConfig, ...config };
+): IApiResponse {
+  if (isString(response)) {
+    return {
+      code: 0,
+      message: "",
+      data: response,
+      isSuccess: true,
+      _raw: response,
+    };
+  }
 
-  const code = Number(response[cfg.code]) || 0;
-  const successCodes = Array.isArray(cfg.success) ? cfg.success : [cfg.success];
+  // check is array buffer
+  if (response instanceof ArrayBuffer) {
+    return {
+      code: 0,
+      message: "",
+      data: response,
+      isSuccess: true,
+      _raw: response,
+    };
+  }
+
+  const mergedConfig = merge(defaultResponseConfig, config);
+
+  const code = Number(response[mergedConfig.code]) || 0;
+  const successCodes = isArray(mergedConfig.success)
+    ? mergedConfig.success
+    : [mergedConfig.success];
   const isSuccess = successCodes.some((sc) => String(sc) === String(code));
 
   return {
     code,
-    message: response[cfg.message] || "",
-    data: response[cfg.data],
+    message: response[mergedConfig.message] || "",
+    data: response[mergedConfig.data],
     isSuccess,
     _raw: response,
   };

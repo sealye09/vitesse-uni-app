@@ -1,6 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
 
-import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 
@@ -35,7 +34,7 @@ function delay(ms?: number) {
 
 // 中间件
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // 验证 token 的中间件
 function authMiddleware(req: Request, res: Response, next: NextFunction) {

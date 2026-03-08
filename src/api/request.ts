@@ -7,12 +7,12 @@ import { createServerTokenAuthentication } from "alova/client";
 
 import { env } from "@/config/env";
 
-import type { LoginResponse } from "./methods/user";
-import type { ApiResponse } from "./type";
+import type { IUserService } from "./services/user";
+import type { IApiResponse } from "./types";
 
 import { transformResponse } from "./config";
-import { refreshToken } from "./methods/user";
 import { toLoginPage } from "./pages";
+import { UserService } from "./services/user";
 import { getToken, removeToken, setRefreshToken, setToken } from "./token";
 
 /**
@@ -26,7 +26,8 @@ const { onAuthRequired, onResponseRefreshToken } =
     },
     login: (response) => {
       console.log("login inceptors -> ", response);
-      const data = (response?.data || {}) as ApiResponse<LoginResponse>;
+      const data = (response?.data ||
+        {}) as IApiResponse<IUserService.LoginResponse>;
       const { token, refreshToken } = data.data || {};
 
       if (token) {
@@ -44,7 +45,7 @@ const { onAuthRequired, onResponseRefreshToken } =
     // 走 uni.request 的 success
     refreshTokenOnSuccess: {
       isExpired: (response, method) => {
-        const data = (response?.data || {}) as ApiResponse<any>;
+        const data = (response?.data || {}) as IApiResponse<any>;
         const { code } = data || {};
         if (code === 401) {
           console.log("判断 token 过期：success api -->", response, method);
@@ -56,7 +57,7 @@ const { onAuthRequired, onResponseRefreshToken } =
       handler: async (response, method) => {
         console.log("刷新 token success -->", response, method);
         try {
-          const res = await refreshToken();
+          const res = await UserService.refreshToken();
           const { token, refreshToken: _refreshToken } = res.data;
           if (token) {
             setToken(token);

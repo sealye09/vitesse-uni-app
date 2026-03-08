@@ -2,15 +2,7 @@
 import { useRequest } from "alova/client";
 
 import { getToken, setRefreshToken, setToken } from "@/api";
-import {
-  getPrivatePosts,
-  getPublicPosts,
-  getUserInfo,
-  login,
-  logout,
-  refreshToken,
-  testExpireToken,
-} from "@/api/methods/user";
+import { UserService } from "@/api/services/user";
 import AppLogos from "@/components/AppLogos.vue";
 import InputEntry from "@/components/InputEntry.vue";
 
@@ -29,7 +21,7 @@ definePage({
 
 // 登录
 const { send: handleLogin } = useRequest(
-  () => login({ username: "admin", password: "12345116" }),
+  () => UserService.login({ username: "admin", password: "12345116" }),
   { immediate: false },
 ).onSuccess((res) => {
   console.log("登录成功:", res);
@@ -37,14 +29,14 @@ const { send: handleLogin } = useRequest(
 });
 
 // 退出登录
-const { send: handleLogout } = useRequest(logout, {
+const { send: handleLogout } = useRequest(UserService.logout, {
   immediate: false,
 }).onSuccess(() => {
   uni.showToast({ title: "已退出登录", icon: "success" });
 });
 
 // 获取用户信息
-const { send: handleGetUserInfo } = useRequest(getUserInfo, {
+const { send: handleGetUserInfo } = useRequest(UserService.getUserInfo, {
   immediate: false,
 }).onSuccess((res) => {
   console.log("用户信息:", res);
@@ -52,7 +44,7 @@ const { send: handleGetUserInfo } = useRequest(getUserInfo, {
 });
 
 // 获取公开文章（访客接口）
-const { send: handleGetPublicPosts } = useRequest(getPublicPosts, {
+const { send: handleGetPublicPosts } = useRequest(UserService.getPublicPosts, {
   immediate: false,
 }).onSuccess(({ data }) => {
   uni.showToast({
@@ -62,9 +54,10 @@ const { send: handleGetPublicPosts } = useRequest(getPublicPosts, {
 });
 
 // 获取私有文章（需要授权）
-const { send: handleGetPrivatePosts } = useRequest(getPrivatePosts, {
-  immediate: false,
-}).onSuccess(({ data }) => {
+const { send: handleGetPrivatePosts } = useRequest(
+  UserService.getPrivatePosts,
+  { immediate: false },
+).onSuccess(({ data }) => {
   console.log("私有文章:", data);
   uni.showToast({
     title: `获取到 ${data.data?.length || 0} 篇文章`,
@@ -73,7 +66,7 @@ const { send: handleGetPrivatePosts } = useRequest(getPrivatePosts, {
 });
 
 // 测试 token 过期
-const { send: handleTestExpireToken } = useRequest(() => testExpireToken(), {
+const { send: handleTestExpireToken } = useRequest(UserService.expireToken, {
   immediate: false,
 }).onError(() => {
   console.log("Token 过期测试");
@@ -81,7 +74,7 @@ const { send: handleTestExpireToken } = useRequest(() => testExpireToken(), {
 });
 
 // 手动刷新 Token
-const { send: handleRefreshToken } = useRequest(() => refreshToken(), {
+const { send: handleRefreshToken } = useRequest(UserService.refreshToken, {
   immediate: false,
 }).onSuccess(({ data }) => {
   console.log("刷新 Token 成功:", data);

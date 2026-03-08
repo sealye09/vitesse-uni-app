@@ -81,6 +81,13 @@ export default antfu({
       "perfectionist/sort-named-imports": "error",
     },
   })
+  .override("antfu/e18e/rules", {
+    /// keep-sorted
+    rules: {
+      "e18e/ban-dependencies": "off",
+      "e18e/prefer-static-regex": "off",
+    },
+  })
   // append custom rules and plugins
   .append(globals())
   .append(sortManifestJson())

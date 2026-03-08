@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 import { toHomePage } from "@/api";
-import { login } from "@/api/methods/user";
+import { UserService } from "@/api/services/user";
 
 defineOptions({
   name: "LoginPage",
@@ -27,7 +27,7 @@ async function handleLogin() {
 
   loading.value = true;
   try {
-    const res = await login({
+    const res = await UserService.login({
       username: username.value,
       password: password.value,
     });
