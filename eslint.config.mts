@@ -14,6 +14,7 @@ export default antfu({
   unocss: false,
   lessOpinionated: true,
   stylistic: false,
+  e18e: false,
   ignores: [
     "dist",
     "node_modules",
@@ -79,13 +80,6 @@ export default antfu({
       "perfectionist/sort-imports": ["error"],
       "perfectionist/sort-named-exports": "error",
       "perfectionist/sort-named-imports": "error",
-    },
-  })
-  .override("antfu/e18e/rules", {
-    /// keep-sorted
-    rules: {
-      "e18e/ban-dependencies": "off",
-      "e18e/prefer-static-regex": "off",
     },
   })
   // append custom rules and plugins
