@@ -18,64 +18,65 @@ import { getToken, removeToken, setTokens } from "./token";
 /**
  * 创建 token 认证策略
  */
-const { onAuthRequired, onResponseRefreshToken } =
-  createServerTokenAuthentication<VueHookType, UniappRequestAdapter>({
-    assignToken: (method) => {
-      const Authorization = `Bearer ${getToken()}`;
-      method.config.headers.Authorization = Authorization;
+const { onAuthRequired, onResponseRefreshToken } = createServerTokenAuthentication<
+  VueHookType,
+  UniappRequestAdapter
+>({
+  assignToken: (method) => {
+    const Authorization = `Bearer ${getToken()}`;
+    method.config.headers.Authorization = Authorization;
+  },
+  login: (response) => {
+    console.log("login inceptors -> ", response);
+    const data = (response?.data || {}) as IApiResponse<IUserService.LoginResponse>;
+    setTokens(data.data);
+  },
+  logout: () => {
+    console.log("logout inceptors");
+    removeToken();
+    toLoginPage();
+  },
+  // 走 uni.request 的 success
+  refreshTokenOnSuccess: {
+    isExpired: (response, method) => {
+      const data = (response?.data || {}) as IApiResponse<any>;
+      const { code } = data || {};
+      if (code === 401) {
+        console.log("判断 token 过期：success api -->", response, method);
+        return true;
+      }
+      return false;
     },
-    login: (response) => {
-      console.log("login inceptors -> ", response);
-      const data = (response?.data ||
-        {}) as IApiResponse<IUserService.LoginResponse>;
-      setTokens(data.data);
+    // 刷新 token 的处理函数
+    handler: async (response, method) => {
+      console.log("刷新 token success -->", response, method);
+      try {
+        const res = await UserService.refreshToken();
+        const count = setTokens(res.data);
+        if (count !== 2) {
+          throw new Error("刷新 token 失败");
+        }
+      } catch (error) {
+        console.error("刷新 token 失败:", error);
+        removeToken();
+        toLoginPage();
+        throw error;
+      }
     },
-    logout: () => {
-      console.log("logout inceptors");
+  },
+  // 走 uni.request 的 fail
+  refreshTokenOnError: {
+    isExpired: (error, method) => {
+      console.log("判断 token 过期：error api -->", error, method);
+      return false;
+    },
+    // 刷新 token 的处理函数
+    handler: async () => {
       removeToken();
       toLoginPage();
     },
-    // 走 uni.request 的 success
-    refreshTokenOnSuccess: {
-      isExpired: (response, method) => {
-        const data = (response?.data || {}) as IApiResponse<any>;
-        const { code } = data || {};
-        if (code === 401) {
-          console.log("判断 token 过期：success api -->", response, method);
-          return true;
-        }
-        return false;
-      },
-      // 刷新 token 的处理函数
-      handler: async (response, method) => {
-        console.log("刷新 token success -->", response, method);
-        try {
-          const res = await UserService.refreshToken();
-          const count = setTokens(res.data);
-          if (count !== 2) {
-            throw new Error("刷新 token 失败");
-          }
-        } catch (error) {
-          console.error("刷新 token 失败:", error);
-          removeToken();
-          toLoginPage();
-          throw error;
-        }
-      },
-    },
-    // 走 uni.request 的 fail
-    refreshTokenOnError: {
-      isExpired: (error, method) => {
-        console.log("判断 token 过期：error api -->", error, method);
-        return false;
-      },
-      // 刷新 token 的处理函数
-      handler: async () => {
-        removeToken();
-        toLoginPage();
-      },
-    },
-  });
+  },
+});
 
 // 创建 alova 实例
 export const alova = createAlova({
@@ -98,8 +99,7 @@ export const alova = createAlova({
       const { meta } = method;
       const { showToast = true } = meta || {};
 
-      const { data, statusCode } =
-        response as UniNamespace.RequestSuccessCallbackResult;
+      const { data, statusCode } = response as UniNamespace.RequestSuccessCallbackResult;
 
       if (statusCode < 200 || statusCode >= 300) {
         throw new Error("请求失败");

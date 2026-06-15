@@ -27,12 +27,8 @@ function handleMenuClick(label: string) {
 <template>
   <view class="flex flex-col bg-background px-6 py-8">
     <!-- Profile Card -->
-    <view
-      class="mb-4 flex items-center gap-4 rounded-lg border border-border bg-card p-4"
-    >
-      <view
-        class="flex size-14 shrink-0 items-center justify-center rounded-full bg-muted"
-      >
+    <view class="mb-4 flex items-center gap-4 rounded-lg border border-border bg-card p-4">
+      <view class="flex size-14 shrink-0 items-center justify-center rounded-full bg-muted">
         <view class="i-ph-user text-2xl text-muted-foreground" />
       </view>
       <view class="flex flex-col">
@@ -42,9 +38,7 @@ function handleMenuClick(label: string) {
     </view>
 
     <!-- Stats Row -->
-    <view
-      class="mb-4 flex items-center justify-around rounded-lg border border-border bg-card p-4"
-    >
+    <view class="mb-4 flex items-center justify-around rounded-lg border border-border bg-card p-4">
       <view class="flex flex-1 flex-col items-center">
         <text class="text-xl font-semibold text-foreground">12</text>
         <text class="mt-1 text-xs text-muted-foreground">收藏</text>
@@ -69,9 +63,7 @@ function handleMenuClick(label: string) {
         class="flex cursor-pointer items-center gap-3 border-b border-border px-4 py-3 active:bg-muted"
         @click="handleMenuClick(item.label)"
       >
-        <view
-          class="flex size-8 items-center justify-center rounded-md bg-muted"
-        >
+        <view class="flex size-8 items-center justify-center rounded-md bg-muted">
           <view class="text-base text-muted-foreground" :class="item.icon" />
         </view>
         <text class="flex-1 text-sm text-foreground">

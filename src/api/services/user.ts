@@ -29,8 +29,7 @@ export const UserService = {
    * 获取用户信息
    * @description 获取当前登录用户的详细信息
    */
-  getUserInfo: () =>
-    alova.Get<IApiResponse<IUserService.UserInfo>>("/user/info"),
+  getUserInfo: () => alova.Get<IApiResponse<IUserService.UserInfo>>("/user/info"),
 
   /**
    * 更新用户信息
@@ -57,20 +56,17 @@ export const UserService = {
    * 退出登录
    * @description 清除 token
    */
-  logout: () =>
-    alova.Post<IApiResponse>("/logout", {}, { meta: { authRole: "logout" } }),
+  logout: () => alova.Post<IApiResponse>("/logout", {}, { meta: { authRole: "logout" } }),
 
   /**
    * 获取公开文章（访客接口，无需授权）
    */
-  getPublicPosts: () =>
-    alova.Get<IApiResponse<IUserService.Post[]>>("/public/posts"),
+  getPublicPosts: () => alova.Get<IApiResponse<IUserService.Post[]>>("/public/posts"),
 
   /**
    * 获取私有文章（需要授权）
    */
-  getPrivatePosts: () =>
-    alova.Get<IApiResponse<IUserService.Post[]>>("/private/posts"),
+  getPrivatePosts: () => alova.Get<IApiResponse<IUserService.Post[]>>("/private/posts"),
 
   /**
    * 测试 token 过期（模拟接口，返回 401）

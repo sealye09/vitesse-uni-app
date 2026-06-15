@@ -60,13 +60,11 @@ onMounted(() => {
       >
         <div
           class="mr-3 flex size-6 items-center justify-center rounded-full border-2"
-          :class="
-            todo.completed ? 'border-green-500 bg-green-500' : 'border-gray-300'
-          "
+          :class="todo.completed ? 'border-green-500 bg-green-500' : 'border-gray-300'"
         >
           <span v-if="todo.completed" class="text-sm text-white">✓</span>
         </div>
-        <span :class="todo.completed ? 'line-through text-gray-400' : ''">
+        <span :class="todo.completed ? 'text-gray-400 line-through' : ''">
           {{ todo.title }}
         </span>
       </div>

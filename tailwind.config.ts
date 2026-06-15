@@ -1,10 +1,6 @@
 import type { Config } from "tailwindcss";
 
-import {
-  dynamicIconsPlugin,
-  getIconCollections,
-  iconsPlugin,
-} from "@egoist/tailwindcss-icons";
+import { dynamicIconsPlugin, getIconCollections, iconsPlugin } from "@egoist/tailwindcss-icons";
 import { isMp } from "@uni-helper/uni-env";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";

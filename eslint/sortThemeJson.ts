@@ -1,8 +1,6 @@
 import type { OptionsOverrides, TypedFlatConfigItem } from "./types";
 
-export function sortThemeJson(
-  options: OptionsOverrides = {},
-): TypedFlatConfigItem[] {
+export function sortThemeJson(options: OptionsOverrides = {}): TypedFlatConfigItem[] {
   const { overrides = {} } = options;
 
   return [

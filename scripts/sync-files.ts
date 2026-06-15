@@ -45,10 +45,7 @@ if (!fs.existsSync(srcDir)) {
 const MIN_SIZE = `{ }`.length; // 如果只有一个空对象，必定是不对的，需要重新生成
 
 // 如果 src/manifest.json 不存在，就创建它；或者如果文件大小小于等于 MIN_SIZE，也重新创建
-if (
-  !fs.existsSync(manifestPath) ||
-  fs.statSync(manifestPath).size <= MIN_SIZE
-) {
+if (!fs.existsSync(manifestPath) || fs.statSync(manifestPath).size <= MIN_SIZE) {
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 } else {
   // recreate

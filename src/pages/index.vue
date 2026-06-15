@@ -54,10 +54,9 @@ const { send: handleGetPublicPosts } = useRequest(UserService.getPublicPosts, {
 });
 
 // 获取私有文章（需要授权）
-const { send: handleGetPrivatePosts } = useRequest(
-  UserService.getPrivatePosts,
-  { immediate: false },
-).onSuccess(({ data }) => {
+const { send: handleGetPrivatePosts } = useRequest(UserService.getPrivatePosts, {
+  immediate: false,
+}).onSuccess(({ data }) => {
   console.log("私有文章:", data);
   uni.showToast({
     title: `获取到 ${data.data?.length || 0} 篇文章`,
@@ -111,15 +110,9 @@ function checkToken() {
         <button class="btn" @click="handleLogout">退出登录</button>
         <button class="btn" @click="handleGetUserInfo">获取用户信息</button>
         <button class="btn" @click="checkToken">检查 Token</button>
-        <button class="btn" @click="handleGetPublicPosts">
-          公开文章 (访客)
-        </button>
-        <button class="btn" @click="handleGetPrivatePosts">
-          私有文章 (需授权)
-        </button>
-        <button class="btn" @click="handleTestExpireToken">
-          测试 Token 过期
-        </button>
+        <button class="btn" @click="handleGetPublicPosts">公开文章 (访客)</button>
+        <button class="btn" @click="handleGetPrivatePosts">私有文章 (需授权)</button>
+        <button class="btn" @click="handleTestExpireToken">测试 Token 过期</button>
         <button class="btn" @click="handleRefreshToken">手动刷新 Token</button>
       </view>
     </view>

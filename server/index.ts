@@ -83,9 +83,7 @@ app.post("/api/login", async (req: Request, res: Response) => {
   await delay();
   const { username, password } = req.body;
 
-  const user = users.find(
-    (u) => u.username === username && u.password === password,
-  );
+  const user = users.find((u) => u.username === username && u.password === password);
 
   if (!user) {
     return res.json({
@@ -201,35 +199,31 @@ app.post("/api/logout", authMiddleware, (req: Request, res: Response) => {
 });
 
 // 获取用户信息（需要授权）
-app.get(
-  "/api/user/info",
-  authMiddleware,
-  async (req: Request, res: Response) => {
-    await delay();
-    const userId = (req as any).body.userId;
-    const user = users.find((u) => u.id === userId);
+app.get("/api/user/info", authMiddleware, async (req: Request, res: Response) => {
+  await delay();
+  const userId = (req as any).body.userId;
+  const user = users.find((u) => u.id === userId);
 
-    if (!user) {
-      return res.status(200).json({
-        code: 404,
-        msg: "用户不存在",
-        data: null,
-      });
-    }
-
-    res.json({
-      code: 200,
-      msg: "获取成功",
-      data: {
-        id: user.id,
-        name: user.name,
-        email: "admin@example.com",
-        avatar: user.avatar,
-        phone: "13800138000",
-      },
+  if (!user) {
+    return res.status(200).json({
+      code: 404,
+      msg: "用户不存在",
+      data: null,
     });
-  },
-);
+  }
+
+  res.json({
+    code: 200,
+    msg: "获取成功",
+    data: {
+      id: user.id,
+      name: user.name,
+      email: "admin@example.com",
+      avatar: user.avatar,
+      phone: "13800138000",
+    },
+  });
+});
 
 // 访客接口（无需授权）
 app.get("/api/public/posts", (_req: Request, res: Response) => {
@@ -245,42 +239,32 @@ app.get("/api/public/posts", (_req: Request, res: Response) => {
 });
 
 // 需要授权的接口
-app.get(
-  "/api/private/posts",
-  authMiddleware,
-  async (_req: Request, res: Response) => {
-    await delay();
-    res.json({
-      code: 200,
-      msg: "获取成功",
-      data: [
-        { id: 1, title: "私有文章1", content: "这是需要登录才能访问的内容" },
-        { id: 2, title: "私有文章2", content: "只有授权用户才能查看" },
-      ],
-    });
-  },
-);
+app.get("/api/private/posts", authMiddleware, async (_req: Request, res: Response) => {
+  await delay();
+  res.json({
+    code: 200,
+    msg: "获取成功",
+    data: [
+      { id: 1, title: "私有文章1", content: "这是需要登录才能访问的内容" },
+      { id: 2, title: "私有文章2", content: "只有授权用户才能查看" },
+    ],
+  });
+});
 
 // 模拟 token 过期
-app.get(
-  "/api/expire-token",
-  authMiddleware,
-  async (_req: Request, res: Response) => {
-    await delay();
-    res.status(200).json({
-      code: 401,
-      msg: "Token 已过期，请刷新",
-      data: null,
-    });
-  },
-);
+app.get("/api/expire-token", authMiddleware, async (_req: Request, res: Response) => {
+  await delay();
+  res.status(200).json({
+    code: 401,
+    msg: "Token 已过期，请刷新",
+    data: null,
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`\n🟢 Test server running at http://localhost:${PORT}`);
   console.log(`\n📋 API 列表:`);
-  console.log(
-    `   POST /api/login          - 登录 (username: admin, password: 123456)`,
-  );
+  console.log(`   POST /api/login          - 登录 (username: admin, password: 123456)`);
   console.log(`   POST /api/auth/refresh   - 刷新 Token`);
   console.log(`   POST /api/logout         - 退出登录`);
   console.log(`   GET  /api/user/info     - 获取用户信息 (需要授权)`);

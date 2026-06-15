@@ -39,9 +39,7 @@ export function getLocalCollections(dir: string, prefix: string) {
         callback: (attr, colorStr, color) => {
           if (!color) {
             // Color cannot be parsed!
-            throw new Error(
-              `Invalid color: "${colorStr}" in attribute ${attr}`,
-            );
+            throw new Error(`Invalid color: "${colorStr}" in attribute ${attr}`);
           }
 
           if (isEmptyColor(color)) {

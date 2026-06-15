@@ -60,22 +60,12 @@ async function handleLogin() {
     <view class="flex flex-col gap-4">
       <!-- 用户名 -->
       <view class="rounded-lg bg-white px-4 py-3">
-        <input
-          v-model="username"
-          class="w-full"
-          placeholder="请输入用户名"
-          type="text"
-        />
+        <input v-model="username" class="w-full" placeholder="请输入用户名" type="text" />
       </view>
 
       <!-- 密码 -->
       <view class="rounded-lg bg-white px-4 py-3">
-        <input
-          v-model="password"
-          class="w-full"
-          password
-          placeholder="请输入密码"
-        />
+        <input v-model="password" class="w-full" password placeholder="请输入密码" />
       </view>
 
       <!-- 登录按钮 -->
@@ -88,9 +78,7 @@ async function handleLogin() {
       </button>
 
       <!-- 提示 -->
-      <view class="mt-4 text-center text-sm text-gray-400">
-        测试账号: admin / 123456
-      </view>
+      <view class="mt-4 text-center text-sm text-gray-400">测试账号: admin / 123456</view>
     </view>
   </view>
 </template>

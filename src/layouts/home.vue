@@ -15,9 +15,7 @@ defineOptions({
     <view class="h-full min-h-screen bg-background text-foreground">
       <slot></slot>
       <AppFooter />
-      <view class="mx-auto py-4 text-center text-sm text-muted-foreground">
-        [Home Layout]
-      </view>
+      <view class="mx-auto py-4 text-center text-sm text-muted-foreground">[Home Layout]</view>
     </view>
   </ConfigProvider>
 </template>

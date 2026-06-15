@@ -5,9 +5,7 @@ import type { ThemeMode } from "@/hooks/useTheme";
  * @param themeJson - 主题配置对象
  * @returns 带 -- 前缀的 CSS 变量对象
  */
-export function toCssVars(
-  themeJson: Record<string, unknown>,
-): Record<string, string> {
+export function toCssVars(themeJson: Record<string, unknown>): Record<string, string> {
   const result: Record<string, string> = {};
   for (const [key, value] of Object.entries(themeJson)) {
     if (typeof value === "string") {

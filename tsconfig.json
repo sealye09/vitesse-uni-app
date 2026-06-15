@@ -2,9 +2,9 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "*": ["./*"]
     },
     "types": [
       "@dcloudio/types",

@@ -1,41 +1,31 @@
-// eslint-disable-next-line ts/ban-ts-comment
-// @ts-expect-error
-import pluginTailwindcss from "eslint-plugin-tailwindcss";
+import pluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
+import { getDefaultSelectors } from "eslint-plugin-better-tailwindcss/defaults";
 
 export function tailwindConfig() {
   return [
-    ...pluginTailwindcss.configs["flat/recommended"],
+    pluginBetterTailwindcss.configs.recommended,
     {
+      /// keep-sorted
       rules: {
-        "tailwindcss/no-custom-classname": "off",
+        "better-tailwindcss/enforce-consistent-important-position": [
+          "error",
+          { position: "legacy" },
+        ],
+        "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+        "better-tailwindcss/enforce-consistent-variable-syntax": ["error", { syntax: "variable" }],
+        "better-tailwindcss/enforce-consistent-variant-order": "warn",
+        "better-tailwindcss/enforce-shorthand-classes": "warn",
+        "better-tailwindcss/no-unknown-classes": "off",
       },
       settings: {
         /// keep-sorted
-        tailwindcss: {
-          callees: [
-            "classnames",
-            "class",
-            "className",
-            "cn",
-            "clsx",
-            "ctl",
-            "cva",
-            "twMerge",
-          ], // These are the default values but feel free to customize
-          classRegex: "^(class(Name|Names)?|.+-class)$",
-          config: "tailwind.config.ts", // returned from `loadConfig()` utility if not provided
-          cssFiles: [
-            "**/*.css",
-            "!**/node_modules",
-            "!**/.*",
-            "!**/dist",
-            "!**/build",
+        "better-tailwindcss": {
+          selectors: [
+            // preserve default selectors
+            ...getDefaultSelectors(),
           ],
-          cssFilesRefreshRate: 5_000,
-          removeDuplicates: true,
-          skipClassAttribute: false,
-          tags: [], // can be set to e.g. ['tw'] for use in tw`bg-blue`
-          whitelist: [],
+          tailwindConfig: "tailwind.config.ts",
+          tsconfig: "tsconfig.json",
         },
       },
     },

@@ -73,10 +73,7 @@ export default antfu({
   .override("antfu/perfectionist/setup", {
     /// keep-sorted
     rules: {
-      "perfectionist/sort-exports": [
-        "error",
-        { order: "asc", type: "natural" },
-      ],
+      "perfectionist/sort-exports": ["error", { order: "asc", type: "natural" }],
       "perfectionist/sort-imports": ["error"],
       "perfectionist/sort-named-exports": "error",
       "perfectionist/sort-named-imports": "error",

@@ -39,8 +39,8 @@ function go() {
       class="mt-4 cursor-pointer rounded-md px-4 py-2.5 text-center text-sm font-medium transition-colors"
       :class="
         name
-          ? 'bg-primary text-primary-foreground active:bg-primary/90'
-          : 'bg-muted text-muted-foreground cursor-not-allowed opacity-50'
+          ? 'active:bg-primary/90 bg-primary text-primary-foreground'
+          : 'cursor-not-allowed bg-muted text-muted-foreground opacity-50'
       "
       @click="go"
     >
